@@ -1,4 +1,0 @@
--- Supabase Database Migrations
--- Place your SQL migration files here
--- Format: YYYYMMDDHHMMSS_description.sql
--- Example: 20240101120000_create_users_table.sql
