@@ -1921,7 +1921,7 @@ Use low temperature for CODING and GENERAL precision, medium temperature for CON
         usageInfo={usageInfo}
       />
 
-      <main className="dashboard-main" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', flex: 1, position: 'relative', overflow: 'hidden', marginLeft: isSidebarOpen ? '280px' : '0', transition: 'margin-left 0.3s var(--ease-premium)' }}>
+      <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', flex: 1, position: 'relative', marginLeft: isSidebarOpen ? '280px' : '0', transition: 'margin-left 0.3s ease', background: '#080808' }}>
 
 
 
