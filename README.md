@@ -60,7 +60,8 @@ Built for founders validating ideas, developers planning features, content strat
 
 ---
 
-<img width="1890" height="905" alt="image" src="https://github.com/user-attachments/assets/ab453952-aeaf-451f-a0c2-6110c1c04500" />
+<img width="1883" height="914" alt="image" src="https://github.com/user-attachments/assets/ad304ed9-9cdc-40b2-b347-4c3aa0ffd4ad" />
+
 
 
 
