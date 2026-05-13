@@ -40,6 +40,11 @@ const PromptBattle = () => {
         .limit(50);
 
       if (error) {
+        if (error.message?.includes('fetch') || error.code === 'PGRST205' || error.code === '42P01') {
+          setBattles([]);
+          setLoading(false);
+          return;
+        }
         console.error('Error fetching battles:', error);
         showNotification('❌ Failed to load battles');
         setBattles([]);
