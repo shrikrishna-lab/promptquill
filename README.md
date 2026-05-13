@@ -73,7 +73,7 @@ Before installing, you need:
 
 - **Node.js 18 or higher.** Download from nodejs.org or install via your system package manager.
 - **A Supabase account (free).** Sign up at supabase.com and create a new project. The free tier is sufficient.
-- **At least one AI provider API key.** All five supported providers offer free tiers. Groq is recommended for first-time setup because it offers 14,400 free requests per day with the fastest response times. Sign up at console.groq.com and generate an API key.
+- **At least one AI provider API key.** Groq is recommended for first-time setup — it offers 14,400 free requests per day. Sign up at console.groq.com and generate an API key.
 
 ### Quick Start
 
@@ -91,13 +91,24 @@ After running `npm run dev`, open the URL shown in your terminal (typically http
 
 ## Free AI Provider Keys
 
-| Provider | Free Tier Limit | Best For | Sign Up |
-|---|---|---|---|
-| Groq | 14,400 requests/day | Speed | console.groq.com |
-| Google Gemini | 1,500 requests/day | Output quality | aistudio.google.com |
-| Cerebras | Free tier | Fast inference | cloud.cerebras.ai |
-| OpenRouter | Free models | Model variety | openrouter.ai |
-| Cloudflare Workers AI | 10,000 requests/day | Reliability | dash.cloudflare.com |
+| Provider | Type | Best For | Sign Up |
+|---|---|---|---|---|
+| OpenAI | Cloud (paid) | General purpose, code, reasoning | platform.openai.com |
+| Anthropic (Claude) | Cloud (paid) | Analysis, coding, long context | console.anthropic.com |
+| xAI (Grok) | Cloud (paid) | Reasoning, code | console.x.ai |
+| Google Gemini | Cloud (free tier) | Speed, quality | aistudio.google.com |
+| Groq | Cloud (free tier) | Speed, open models | console.groq.com |
+| Mistral AI | Cloud (free tier) | Multilingual, code | console.mistral.ai |
+| DeepSeek | Cloud (free tier) | Code, reasoning | platform.deepseek.com |
+| Cohere | Cloud (paid) | RAG, embeddings | dashboard.cohere.com |
+| Perplexity AI | Cloud (paid) | Search, research | docs.perplexity.ai |
+| Moonshot AI (Kimi) | Cloud (paid) | Chinese language, long context | platform.moonshot.cn |
+| Cerebras | Cloud (free tier) | Fast inference | cloud.cerebras.ai |
+| OpenRouter | Cloud (free tier) | Model variety | openrouter.ai |
+| Cloudflare Workers AI | Cloud (free tier) | Edge deployment | dash.cloudflare.com |
+| NVIDIA NIM | Cloud (free tier) | Enterprise models | build.nvidia.com |
+| Ollama | Local (free) | Private, offline | ollama.com |
+| LM Studio | Local (free) | Private, offline | lmstudio.ai |
 
 You only need one provider key to get started. Adding more providers improves reliability through automatic failover.
 
@@ -189,20 +200,16 @@ Optimized for rapid idea validation with concise output.
 ## Environment Variables
 
 | Variable | Required | Description |
-|---|---|---|
+|---|---|---|---|
 | `VITE_SUPABASE_URL` | Yes | Your Supabase project URL |
 | `VITE_SUPABASE_ANON_KEY` | Yes | Your Supabase anonymous key |
-| `VITE_BACKEND_URL` | Yes | URL where the backend server is running |
-| `SUPABASE_URL` | Yes | Supabase project URL for the backend connection |
-| `SUPABASE_SERVICE_KEY` | Yes | Supabase service role key for database table creation |
-| `GROQ_KEY_1` | No | Groq API key |
-| `GEMINI_API_KEY` | No | Google Gemini API key |
-| `CEREBRAS_KEY` | No | Cerebras API key |
-| `OPENROUTER_API_KEY` | No | OpenRouter API key |
-| `CF_API_KEY` | No | Cloudflare Workers AI API key |
-| `CF_ACCOUNT_ID` | No | Cloudflare account ID |
-| `PORT` | No | Backend server port (default: 5000) |
+| `VITE_BACKEND_URL` | Yes | Backend server URL |
+| `SUPABASE_URL` | Yes | Supabase URL for backend connection |
+| `SUPABASE_SERVICE_KEY` | Yes | Supabase service role key |
+| `PORT` | No | Backend port (default: 5000) |
 | `NODE_ENV` | No | Environment mode (default: development) |
+
+AI provider keys are set through the setup wizard and stored in your own database. You do not need to add them to `.env`.
 
 At least one AI provider key is required. All others are optional.
 
