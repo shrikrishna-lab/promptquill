@@ -2048,24 +2048,21 @@ Use low temperature for CODING and GENERAL precision, medium temperature for CON
                 </div>
               </div>
 
-              {/* MOBILE SPLASH (Original Mascot UI) */}
-              <div className="mobile-only-input animate-fade-in" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-                <div style={{ textAlign: 'center', position: 'relative' }}>
+              {/* DESKTOP VIEW - Mascot + Chips + Input */}
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '40px 20px', maxWidth: 800, margin: '0 auto' }}>
+                <div style={{ textAlign: 'center', marginBottom: 32 }}>
                   <Mascot />
                   <h1 style={{ fontSize: '28px', fontWeight: '900', lineHeight: '1.2', letterSpacing: '-1px', margin: '20px 0 0 0' }}>
                     <span style={{ color: '#fff' }}>How can I help </span>
                     <span style={{ color: '#a3e635' }}>you</span>
                     <span style={{ color: '#fff' }}> today?</span>
                   </h1>
-                  <p style={{ color: '#888', marginTop: '12px', fontSize: '13px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', letterSpacing: '1px', fontWeight: '700' }}>
-                    AI briefs in 30 seconds
+                  <p style={{ color: '#888', marginTop: '12px', fontSize: '13px', letterSpacing: '1px', fontWeight: '700' }}>
+                    AI briefs in 30 seconds · 6 modes · 16 providers
                   </p>
                 </div>
-              </div>
 
-              {/* DESKTOP CHIPS + INPUT */}
-              <div className="desktop-only-input" style={{ width: '100%', maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                <div className="animate-fade-in suggestion-chips-row" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                <div className="animate-fade-in suggestion-chips-row" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center', marginBottom: 24 }}>
                   {[
                     { icon: '💡', text: 'SaaS for students' },
                     { icon: '🚀', text: 'AI tutor app' },
@@ -2077,50 +2074,9 @@ Use low temperature for CODING and GENERAL precision, medium temperature for CON
                     <button
                       key={idx}
                       onClick={() => setSuggestionInput(chip.text)}
-                      className={`animate-slide-up delay-${(idx + 1) * 100}`}
-                      style={{ padding: '12px 20px', backgroundColor: '#111', border: '1px solid #1a1a1a', borderRadius: '99px', color: '#666', fontSize: '13px', fontWeight: '700', cursor: 'pointer', transition: '0.3s var(--ease-premium)', display: 'flex', alignItems: 'center', gap: '8px' }}
+                      style={{ padding: '12px 20px', backgroundColor: '#111', border: '1px solid #1a1a1a', borderRadius: '99px', color: '#666', fontSize: '13px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', transition: '0.2s' }}
                       onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#333'; e.currentTarget.style.color = '#fff'; }}
                       onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#1a1a1a'; e.currentTarget.style.color = '#666'; }}
-                    >
-                      <span>{chip.icon}</span> {chip.text}
-                    </button>
-                  ))}
-                </div>
-                <BottomInput onGenerate={handleGenerate} loading={loading} isCentered={true} isSidebarOpen={isSidebarOpen} externalInput={suggestionInput} mode={bottomInputMode} setMode={setBottomInputMode} isPro={true} />
-              </div>
-
-              {/* MOBILE CHIPS + INPUT */}
-              <div className="mobile-only-input" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                <div className="animate-fade-in suggestion-chips-row" style={{ display: 'flex', gap: '12px' }}>
-                  {[
-                    { icon: '💡', text: 'SaaS for students' },
-                    { icon: '🚀', text: 'AI tutor app' },
-                    { icon: '💻', text: 'Build a portfolio' },
-                    { icon: '🎨', text: 'Logo design' },
-                    { icon: '🎬', text: 'Video script' },
-                    { icon: '📱', text: 'Mobile app idea' },
-                    { icon: '🎮', text: 'Game concept' },
-                    { icon: '🌍', text: 'Travel planner' }
-                  ].map((chip, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setSuggestionInput(chip.text)}
-                      className={`animate-slide-up delay-${(idx + 1) * 100}`}
-                      style={{ 
-                        padding: '10px 18px', 
-                        backgroundColor: '#111', 
-                        border: '1px solid #1a1a1a', 
-                        borderRadius: '99px', 
-                        color: '#888', 
-                        fontSize: '12px', 
-                        fontWeight: '700', 
-                        cursor: 'pointer', 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        gap: '8px',
-                        whiteSpace: 'nowrap',
-                        flexShrink: 0
-                      }}
                     >
                       <span>{chip.icon}</span> {chip.text}
                     </button>
