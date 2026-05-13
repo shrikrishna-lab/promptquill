@@ -499,57 +499,9 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
           </div>
         </div>
 
-        {/* Mode Selector (Mobile Only) */}
-        <div className="mobile-only" style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '16px', marginBottom: '8px', width: '100%', maxWidth: 'calc(100vw - 32px)' }}>
-          <span style={{ fontSize: '13px', color: '#888', paddingLeft: '8px' }}>Choose a mode</span>
-          <div className="mode-selector-wrapper animate-slide-up delay-100" style={{
-            display: 'flex', alignItems: 'center', gap: '8px', padding: '4px 0',
-            overflowX: 'auto', WebkitOverflowScrolling: 'touch',
-            scrollSnapType: 'x mandatory',
-            msOverflowStyle: 'none', scrollbarWidth: 'none',
-            paddingLeft: '4px', paddingRight: '16px',
-            width: '100%'
-          }}>
-            {modes.map(m => (
-              <button
-                key={m.id}
-                onClick={() => handleModeSelect(m.id)}
-                disabled={loading}
-                style={{
-                  padding: '10px 18px',
-                  borderRadius: '99px',
-                  border: currentMode === m.id ? '1.5px solid #a3e635' : '1px solid rgba(255,255,255,0.06)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  fontSize: '12px',
-                  fontWeight: '600',
-                  cursor: loading ? 'not-allowed' : 'pointer',
-                  background: currentMode === m.id ? 'rgba(163, 230, 53, 0.05)' : 'rgba(255,255,255,0.02)',
-                  color: currentMode === m.id ? '#a3e635' : '#888',
-                  transition: 'all 0.3s var(--ease-premium)',
-                  opacity: (loading && currentMode !== m.id) ? 0.3 : 1,
-                  boxShadow: currentMode === m.id ? '0 0 15px rgba(163, 230, 53, 0.1)' : 'none',
-                  whiteSpace: 'nowrap',
-                  flexShrink: 0,
-                  scrollSnapAlign: 'start'
-                }}
-              >
-                <span style={{ 
-                  color: currentMode === m.id ? '#a3e635' : 'inherit', 
-                  fontSize: '14px'
-                }}>{m.icon}</span>
-                {m.id === 'CREATIVE' && creativeSubType
-                  ? `Creative — ${creativeSubTypes.find((s) => s.id === creativeSubType)?.label || 'Type'}`
-                  : m.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-
       </div>
-
+        </div>
+  );
       {/* Creative Sub-Type Selector Modal */}
       {showSubTypeModal && currentMode === 'CREATIVE' && (
         <div className="creative-modal-overlay" style={{
@@ -691,8 +643,6 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
           </div>
         </div>
       )}
-    </div>
-  );
 };
 
 export default BottomInput;
