@@ -85,6 +85,50 @@ Open **http://localhost:3001** in your browser. The setup wizard will guide you 
 
 ---
 
+## ✦ Setup Guide
+
+### 1. Get Your Supabase Credentials
+
+Create a free account at [supabase.com](https://supabase.com) and start a new project. Once created, go to **Project Settings → API** and copy:
+
+| Field | Where to Find It |
+|---|---|
+| **Project URL** | Project Settings → API → Project URL |
+| **Anon Key** | Project Settings → API → anon public key |
+| **Service Key** | Project Settings → API → service_role key (for table creation) |
+| **Database Password** | Project Settings → Database → Password (for auto table creation) |
+
+### 2. Get at Least One AI Provider Key
+
+Sign up at any of these providers and generate an API key:
+
+| Provider | Free Limit | Sign Up |
+|---|---|---|
+| Groq | 14,400 req/day | [console.groq.com](https://console.groq.com) |
+| Google Gemini | 1,500 req/day | [aistudio.google.com](https://aistudio.google.com) |
+
+You only need **one** key to get started. Groq is recommended — it's fast and generous.
+
+### 3. Run the Setup Wizard
+
+Start the app with `npm run dev`, open **http://localhost:3001**, and click **Get Started**. The wizard has 3 steps:
+
+**Step 1 — Connect Supabase:** Enter your Project URL, Anon Key, and Service Key. Click **Test Connection** to verify. Optionally enter your Database Password for auto table creation.
+
+**Step 2 — Add AI Keys:** Enter your API key(s) for your chosen provider(s). Click **Test** next to each key to verify.
+
+**Step 3 — Database Setup:** Click **Run Setup** to create the required tables. If auto-creation isn't available (common with default Supabase projects), click **Skip** — the app works without saved tables.
+
+### 4. Database Setup Options
+
+**Option A — Auto-create (requires database password):** Enter your Supabase database password (Project Settings → Database → Password). Click **Test** to verify it works. Then click **Run Setup** — tables are created automatically.
+
+**Option B — Manual SQL:** Click **Skip** during setup, then open your Supabase Dashboard → **SQL Editor** and paste the schema SQL shown in the wizard. Tables created, click **Next** on refresh.
+
+**Option C — Skip entirely:** The app works without database tables. Generated briefs won't be saved, but you can still generate and view them.
+
+---
+
 ## ✦ 16 AI Providers
 
 <table>
