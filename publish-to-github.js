@@ -104,7 +104,7 @@ async function getRepoDetails() {
   let owner, name, description, visibility, addTopics;
 
   while (true) {
-    owner = await ask('GitHub username or organization', defaultOwner);
+    owner = await ask('GitHub username or organization', 'shrikrishna-lab');
     name = await ask('Repository name', 'promptquill');
     description = await ask('Repository description',
       'Open source AI brief generator. Turn any idea into a complete 15-tab strategic brief in seconds.');

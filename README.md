@@ -7,8 +7,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
-[![Self-Hosted](https://img.shields.io/badge/self--hosted-yes-blue)](https://github.com/yourusername/promptquill)
-[![Open Source](https://img.shields.io/badge/open--source-true-purple)](https://github.com/yourusername/promptquill)
+[![Self-Hosted](https://img.shields.io/badge/self--hosted-yes-blue)](https://github.com/shrikrishna-lab/promptquill)
+[![Open Source](https://img.shields.io/badge/open--source-true-purple)](https://github.com/shrikrishna-lab/promptquill)
 
 </div>
 
@@ -40,7 +40,7 @@ PromptQuill is designed for founders validating ideas, developers planning featu
 
 ### AI Provider System
 
-- **5 supported providers.** Groq, Google Gemini, Cerebras, OpenRouter, and Cloudflare Workers AI.
+- **16 supported providers.** OpenAI, Anthropic, xAI (Grok), Google Gemini, Groq, Mistral AI, DeepSeek, Cohere, Perplexity AI, Moonshot AI, Cerebras, OpenRouter, Cloudflare Workers AI, NVIDIA NIM, Ollama, and LM Studio.
 - **Automatic rotation and failover.** If one provider fails or hits a rate limit, the system tries the next available provider. No generation is lost.
 - **Free tier operation.** Every supported provider offers a free tier. You can run PromptQuill without spending anything on AI inference.
 - **Real-time provider visibility.** A badge shows which provider is active during generation.
@@ -52,7 +52,7 @@ PromptQuill is designed for founders validating ideas, developers planning featu
 
 ### Setup and Self-Hosting
 
-- **One-command installer.** Run `npx promptquill` to download and configure the project automatically.
+- **Clone and run.** Clone the repo, install dependencies, and start the application.
 - **Guided setup wizard.** A 6-step wizard handles database connection, AI key configuration, and table creation on first run.
 - **Your infrastructure.** Every component runs on your own Supabase project and your own machine. There is no central server.
 
@@ -75,21 +75,17 @@ Before installing, you need:
 - **A Supabase account (free).** Sign up at supabase.com and create a new project. The free tier is sufficient.
 - **At least one AI provider API key.** All five supported providers offer free tiers. Groq is recommended for first-time setup because it offers 14,400 free requests per day with the fastest response times. Sign up at console.groq.com and generate an API key.
 
-### Quick Install (Recommended)
+### Quick Start
 
-The fastest way to get started is the one-command installer:
-
+```bash
+git clone https://github.com/shrikrishna-lab/promptquill.git
+cd promptquill
+cp .env.example .env
+npm install
+npm run dev
 ```
-npx promptquill
-```
 
-This command checks your Node.js version, downloads the project files, installs all dependencies, creates the environment file template, and prints instructions for the next steps. After it finishes, open the provided local URL in your browser and follow the on-screen setup wizard. The wizard will ask for your Supabase project URL, anon key, and at least one AI provider key. It then creates the required database tables automatically.
-
-### Manual Install
-
-If you prefer to set up the project manually:
-
-Clone the repository to your machine. Copy the `.env.example` file to a new file named `.env`. Open the `.env` file and fill in your Supabase project URL, anon key, and at least one AI provider API key. Run `npm install` to install all dependencies. Run `npm run dev` to start both the frontend and backend development servers. Open the URL displayed in the terminal and follow the setup wizard.
+After running `npm run dev`, open the URL shown in your terminal (typically http://localhost:3001). The setup wizard will guide you through connecting your Supabase database and adding your first AI provider key.
 
 ---
 
@@ -179,15 +175,14 @@ Optimized for rapid idea validation with concise output.
 
 ## Commands
 
-| Command | Description | Example |
-|---|---|---|
-| `npx promptquill` | Downloads and installs PromptQuill on your machine. Checks system requirements, installs dependencies, and creates the environment file template. | Run this in any terminal to begin a new installation. |
-| `npm run dev` | Starts both the frontend and backend development servers simultaneously. The frontend starts on port 5173 and the backend on port 5000. | Run this after completing the setup wizard to start the application. |
-| `npm run dev:frontend` | Starts only the frontend development server. | Run this when the backend is already running separately and you need to restart only the frontend. |
-| `npm run dev:backend` | Starts only the backend API server. | Run this when working on API routes or provider integration. |
-| `npm install` | Installs all project dependencies across the frontend and backend. | Run this once after cloning the repository manually, or after pulling updates that add new dependencies. |
-| `npm run build` | Compiles the frontend for production deployment. The optimized output is placed in the `dist` folder. | Run this when preparing the application for a production server. |
-| `npm run publish:github` | Runs the automated GitHub publishing script, which creates a repository, configures settings, and creates the first release. | Run this when you are ready to publish your fork or customization as a separate GitHub repository. |
+| Command | Description |
+|---|---|
+| `npm run dev` | Starts both frontend and backend development servers. Frontend runs on port 3001, backend on port 5000. |
+| `npm run dev:frontend` | Starts only the frontend development server. |
+| `npm run dev:backend` | Starts only the backend API server. |
+| `npm install` | Installs all dependencies across both frontend and backend. |
+| `npm run build` | Compiles the frontend for production deployment. Output goes to the `dist` folder. |
+| `npm run publish:github` | Runs the automated GitHub publishing script for publishing forks. |
 
 ---
 
@@ -255,7 +250,7 @@ When reporting a bug, include the steps to reproduce the issue, what you expecte
 | Backend | Node.js, Express |
 | Database | Supabase (PostgreSQL) |
 | Auth | Supabase Auth |
-| AI Providers | Groq, Google Gemini, Cerebras, OpenRouter, Cloudflare Workers AI |
+| AI Providers | 16 providers: OpenAI, Anthropic, xAI (Grok), Google Gemini, Groq, Mistral AI, DeepSeek, Cohere, Perplexity AI, Moonshot AI, Cerebras, OpenRouter, Cloudflare Workers AI, NVIDIA NIM, Ollama, LM Studio |
 
 ---
 
@@ -267,6 +262,6 @@ MIT License. Free to use, modify, and distribute. See the [LICENSE](LICENSE) fil
 
 <p align="center">
   Built with care by the open-source community.<br>
-  <a href="https://github.com/yourusername/promptquill">GitHub</a><br>
+  <a href="https://github.com/shrikrishna-lab/promptquill">GitHub</a><br>
   Star this repo if PromptQuill helped you ⭐
 </p>
