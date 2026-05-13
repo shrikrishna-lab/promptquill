@@ -1874,6 +1874,38 @@ Use low temperature for CODING and GENERAL precision, medium temperature for CON
     }
   };
 
+  const renderModePills = () => {
+    const modes = [
+      { id: 'CODING', label: 'Coding', icon: '</>', color: '#3b82f6', glow: 'rgba(59,130,246,0.4)' },
+      { id: 'STARTUP', label: 'Startup', icon: '🚀', color: '#f97316', glow: 'rgba(249,115,22,0.4)' },
+      { id: 'STARTUP_LITE', label: 'Startup Lite', icon: '✨', color: '#fbbf24', glow: 'rgba(251,191,36,0.4)' },
+      { id: 'CONTENT', label: 'Content', icon: '📝', color: '#22c55e', glow: 'rgba(34,197,94,0.4)' },
+      { id: 'GENERAL', label: 'General', icon: '⚡', color: '#a78bfa', glow: 'rgba(167,139,250,0.4)' },
+      { id: 'CREATIVE', label: 'Creative', icon: '🎨', color: '#f472b6', glow: 'rgba(244,114,182,0.4)' },
+    ];
+    return modes.map(m => {
+      const active = bottomInputMode === m.id;
+      return (
+        <button key={m.id} type="button" onClick={(e) => { e.preventDefault(); setBottomInputMode(m.id); e.currentTarget.style.transform = 'scale(0.94)'; setTimeout(() => e.currentTarget.style.transform = 'scale(1)', 100); }}
+          style={{
+            padding: '8px 16px', borderRadius: '10px', fontSize: 12, fontWeight: 700,
+            cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, letterSpacing: '0.3px',
+            border: active ? `2px solid ${m.color}` : '1px solid #1a1a1a',
+            background: active ? `linear-gradient(135deg, ${m.color}22, ${m.color}08)` : 'transparent',
+            color: active ? m.color : '#555',
+            boxShadow: active ? `0 0 30px ${m.glow}, inset 0 0 20px ${m.color}11` : 'none',
+            transition: 'all 0.25s', textShadow: active ? `0 0 12px ${m.glow}` : 'none',
+            transform: active ? 'scale(1.02)' : 'scale(1)',
+          }}
+          onMouseEnter={e => { if (!active) { e.currentTarget.style.borderColor = '#333'; e.currentTarget.style.color = '#888'; }}}
+          onMouseLeave={e => { if (!active) { e.currentTarget.style.borderColor = '#1a1a1a'; e.currentTarget.style.color = '#555'; }}}
+        >
+          <span>{m.icon}</span> {m.label}
+        </button>
+      );
+    });
+  };
+
   // Check if setup is complete
   const setupComplete = typeof window !== 'undefined' && localStorage.getItem('pq_setup_complete');
 
@@ -2074,34 +2106,8 @@ Use low temperature for CODING and GENERAL precision, medium temperature for CON
 
               {/* Mode Pills */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 16 }}>
-                {[
-                  { id: 'CODING', label: 'Coding', icon: '</>', color: '#3b82f6' },
-                  { id: 'STARTUP', label: 'Startup', icon: '🚀', color: '#f97316' },
-                  { id: 'STARTUP_LITE', label: 'Startup Lite', icon: '✨', color: '#fbbf24' },
-                  { id: 'CONTENT', label: 'Content', icon: '📝', color: '#22c55e' },
-                  { id: 'GENERAL', label: 'General', icon: '⚡', color: '#6366f1' },
-                  { id: 'CREATIVE', label: 'Creative', icon: '🎨', color: '#ec4899' },
-                ].map(m => (
-                  <button
-                    key={m.id}
-                    type="button"
-                    onClick={(e) => { e.preventDefault(); setBottomInputMode(m.id); }}
-                    style={{
-                      padding: '7px 14px', borderRadius: '8px', border: '1px solid', fontSize: 12, fontWeight: 600,
-                      cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5,
-                      background: bottomInputMode === m.id ? 'rgba(163,230,53,0.08)' : 'transparent',
-                      borderColor: bottomInputMode === m.id ? 'rgba(163,230,53,0.25)' : '#1a1a1a',
-                      color: bottomInputMode === m.id ? '#a3e635' : '#555',
-                      transition: 'all 0.12s',
-                    }}
-                    onMouseEnter={e => { if (bottomInputMode !== m.id) { e.currentTarget.style.borderColor = '#333'; e.currentTarget.style.color = '#888'; }}}
-                    onMouseLeave={e => { if (bottomInputMode !== m.id) { e.currentTarget.style.borderColor = '#1a1a1a'; e.currentTarget.style.color = '#555'; }}}
-                  >
-                    <span>{m.icon}</span> {m.label}
-                  </button>
-                ))}
+                {renderModePills()}
               </div>
-
             </div>
           ) : expanderVisible ? (
             /* ─── Feature C: Smart Idea Expander (Questions UI) ───────────── */

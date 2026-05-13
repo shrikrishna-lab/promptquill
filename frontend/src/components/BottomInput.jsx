@@ -259,12 +259,12 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
             transition: 'all 0.2s'
           }}>
             <button
-              style={{ color: '#555', padding: '6px', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', transition: '0.2s' }}
+              style={{ color: '#888', padding: '5px', background: 'transparent', border: 'none', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', transition: '0.2s' }}
               onClick={handleAttachmentClick}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#a3e635'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#555'}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(163,230,53,0.08)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
             >
-              <Paperclip size={16} />
+              <Paperclip size={15} />
             </button>
             <input
               id="pq-image-upload-input"
@@ -303,31 +303,50 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
             />
             <button
               onClick={handleMic}
-              style={{ color: '#555', padding: '6px', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', marginRight: '2px', transition: '0.2s' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#a3e635'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#555'}
+              style={{ color: '#888', padding: '5px', background: 'transparent', border: 'none', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', marginRight: '2px', transition: '0.2s' }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(163,230,53,0.08)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
             >
-              <Mic size={16} />
+              <Mic size={15} />
             </button>
 
             {/* Personality Selector */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', marginRight: '6px', background: '#111', borderRadius: '8px', border: '1px solid #1f1f1f', padding: '3px' }}>
-              <button type="button" onClick={(e) => { e.preventDefault(); setPersonality('bot'); }}
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: '3px', marginRight: '6px',
+              background: '#111', borderRadius: '8px', border: '1px solid #1f1f1f', padding: '3px',
+            }}>
+              <button type="button" onClick={(e) => {
+                e.preventDefault();
+                setPersonality('bot');
+                e.currentTarget.style.transform = 'scale(0.92)';
+                setTimeout(() => e.currentTarget.style.transform = 'scale(1)', 120);
+              }}
                 style={{
-                  padding: '5px 12px', borderRadius: '6px', border: 'none',
+                  padding: '5px 12px', borderRadius: '6px',
+                  border: personality === 'bot' ? '1.5px solid rgba(163,230,53,0.7)' : '1.5px solid transparent',
                   fontSize: '11px', fontWeight: 700, cursor: 'pointer',
-                  background: personality === 'bot' ? '#a3e635' : 'transparent',
-                  color: personality === 'bot' ? '#000' : '#666',
-                  transition: 'all 0.12s',
+                  background: personality === 'bot' ? 'rgba(163,230,53,0.12)' : 'transparent',
+                  color: personality === 'bot' ? '#bef264' : '#888',
+                  transition: 'all 0.2s',
+                  boxShadow: personality === 'bot' ? '0 0 20px rgba(163,230,53,0.25), inset 0 0 15px rgba(163,230,53,0.05)' : 'none',
+                  textShadow: personality === 'bot' ? '0 0 10px rgba(163,230,53,0.3)' : 'none',
                 }}
               >🤖 Bot</button>
-              <button type="button" onClick={(e) => { e.preventDefault(); setPersonality('human'); }}
+              <button type="button" onClick={(e) => {
+                e.preventDefault();
+                setPersonality('human');
+                e.currentTarget.style.transform = 'scale(0.92)';
+                setTimeout(() => e.currentTarget.style.transform = 'scale(1)', 120);
+              }}
                 style={{
-                  padding: '5px 12px', borderRadius: '6px', border: 'none',
+                  padding: '5px 12px', borderRadius: '6px',
+                  border: personality === 'human' ? '1.5px solid rgba(163,230,53,0.7)' : '1.5px solid transparent',
                   fontSize: '11px', fontWeight: 700, cursor: 'pointer',
-                  background: personality === 'human' ? '#a3e635' : 'transparent',
-                  color: personality === 'human' ? '#000' : '#666',
-                  transition: 'all 0.12s',
+                  background: personality === 'human' ? 'rgba(163,230,53,0.12)' : 'transparent',
+                  color: personality === 'human' ? '#bef264' : '#888',
+                  transition: 'all 0.2s',
+                  boxShadow: personality === 'human' ? '0 0 20px rgba(163,230,53,0.25), inset 0 0 15px rgba(163,230,53,0.05)' : 'none',
+                  textShadow: personality === 'human' ? '0 0 10px rgba(163,230,53,0.3)' : 'none',
                 }}
               >👤 Human</button>
             </div>
