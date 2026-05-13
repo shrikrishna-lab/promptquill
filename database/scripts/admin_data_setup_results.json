@@ -1,0 +1,8 @@
+{
+  "revenue_insert": "Could not find the 'amount' column of 'revenue_events' in the schema cache",
+  "waitlist_insert": "new row violates row-level security policy for table \"waitlist\"",
+  "revenue_count": "0 events",
+  "waitlist_count": "0 entries",
+  "profiles_count": "2 users",
+  "campaigns_count": "0 campaigns"
+}

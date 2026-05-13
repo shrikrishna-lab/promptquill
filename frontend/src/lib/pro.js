@@ -1,0 +1,11 @@
+export const canGenerate = async () => ({ allowed: true, isPro: true, used: 0, limit: 999 });
+export const isProUser = async () => true;
+export const getProInfo = async () => ({ isPro: true });
+export const checkProStatus = async () => ({ isPro: true, tier: 'pro' });
+export const logUsage = async () => {};
+export const FREE_PROMPT_LIMIT = 999;
+export const FREE_DAILY_LIMIT = 999;
+export const PRO_DAILY_LIMIT = 999;
+export const getDailyLimit = () => 999;
+export const startProSubscription = async () => {};
+export const startCreditTopup = async () => {};

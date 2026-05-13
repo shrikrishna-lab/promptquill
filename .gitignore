@@ -1,0 +1,15 @@
+.env
+.env.local
+.env.development
+.env.production
+.env.staging
+.env.*
+!.env.example
+node_modules/
+dist/
+build/
+*.key
+*.pem
+.DS_Store
+*.log
+backend/config/

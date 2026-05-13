@@ -1,0 +1,8 @@
+{
+  "profiles": "Could not find a relationship between 'profiles' and 'sessions' in the schema cache",
+  "sessions": "Could not find a relationship between 'sessions' and 'user_id' in the schema cache",
+  "announcements": "OK",
+  "tickets": "Could not find a relationship between 'support_tickets' and 'user_id' in the schema cache",
+  "waitlist": "Could not find the table 'public.waitlist' in the schema cache",
+  "email": "Could not find the table 'public.email_campaigns' in the schema cache"
+}

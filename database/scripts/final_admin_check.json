@@ -1,0 +1,18 @@
+{
+  "profiles": [
+    {
+      "id": "e5ecf5f0-17ed-44b9-8cdc-eaa992bcd8da",
+      "email": "test-advanced@example.com",
+      "role": "USER",
+      "is_pro": false
+    },
+    {
+      "id": "ac2a88e0-0268-4098-a3a4-5b18b29f0978",
+      "email": "krishnahandibag77@gmail.com",
+      "role": "ADMIN",
+      "is_pro": true
+    }
+  ],
+  "revenue": [],
+  "campaigns": "0 campaigns"
+}

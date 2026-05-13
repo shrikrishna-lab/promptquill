@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- 1. Charset and Viewport -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- 2. Primary Meta Tags -->
+  <title>PromptQuill — AI Brief Generator</title>
+  <meta name="description" content="Turn any idea into a complete 15-tab strategic brief in seconds. Open source. Self-hosted. Your data stays yours." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- 3. Performance Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- 4. Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- 5. Theme -->
+  <meta name="theme-color" content="#000000" />
+
+  <!-- 6. FOUC Prevention -->
+  <script>
+    (function() {
+      var theme = 'dark';
+      try {
+        var saved = localStorage.getItem('promptquill_theme');
+        if (saved === 'light' || saved === 'dark') theme = saved;
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) theme = 'light';
+      } catch(e) {}
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.style.colorScheme = theme;
+    })();
+  </script>
+
+  <!-- 7. Styles -->
+  <link rel="stylesheet" crossorigin href="/assets/index.css" />
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

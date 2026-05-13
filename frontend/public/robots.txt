@@ -1,0 +1,79 @@
+# ════════════════════════════════════════════════════════════════════════
+# PromptQuill Robots.txt 
+# SEO Optimized for All Major Search Engines
+# ════════════════════════════════════════════════════════════════════════
+
+# ─── GOOGLE ───
+User-agent: Googlebot
+Allow: /
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /login
+Disallow: /api
+Disallow: /_next
+Disallow: /static/chunks
+
+# ─── BING & DUCKDUCKGO ───
+User-agent: Bingbot
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /login
+Disallow: /api
+Disallow: /_next
+Disallow: /static/chunks
+
+# ─── YAHOO ───
+User-agent: Slurp
+Allow: /
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /login
+Disallow: /api
+Disallow: /_next
+Disallow: /static/chunks
+
+# ─── YANDEX (RUSSIA/EUROPE) ───
+User-agent: YandexBot
+Allow: /
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /login
+Disallow: /api
+Disallow: /_next
+Disallow: /static/chunks
+
+# ─── BAIDU (CHINA) ───
+User-agent: Baiduspider
+Allow: /
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /login
+Disallow: /api
+Disallow: /_next
+Disallow: /static/chunks
+
+# ─── SOCIAL MEDIA BOTS (OPEN GRAPH PREVIEWS) ───
+User-agent: facebot
+User-agent: Twitterbot
+Allow: /
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /login
+
+# ─── ALL OTHER BOTS ───
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /login
+Disallow: /api
+Disallow: /_next
+Disallow: /static/chunks
+
+# ─── SITEMAPS ───
+Sitemap: https://promptquill.app/sitemap-index.xml
+Sitemap: https://promptquill.app/sitemap-pages.xml
+Sitemap: https://promptquill.app/sitemap-blog.xml
+Sitemap: https://promptquill.app/sitemap-landing.xml

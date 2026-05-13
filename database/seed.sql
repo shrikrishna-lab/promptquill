@@ -1,0 +1,2 @@
+-- No seed data needed. The app works on first user signup.
+-- The setup wizard handles schema creation.
