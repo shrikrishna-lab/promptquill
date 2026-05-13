@@ -91,11 +91,11 @@ export default function Welcome() {
       }} />
 
       {/* Content */}
-      <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', padding: '0 24px' }}>
+      <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', padding: '0 24px', maxWidth: 800, width: '100%' }}>
         <h1 style={{
-          fontSize: 'clamp(48px, 10vw, 96px)', fontWeight: 800, letterSpacing: '-0.04em',
+          fontSize: 'clamp(42px, 8vw, 72px)', fontWeight: 800, letterSpacing: '-0.04em',
           color: '#fff', margin: 0, lineHeight: 1.1,
-          textShadow: '0 0 40px rgba(163, 230, 53, 0.3), 0 0 80px rgba(163, 230, 53, 0.1), 0 0 120px rgba(163, 230, 53, 0.05)',
+          textShadow: '0 0 40px rgba(163, 230, 53, 0.3), 0 0 80px rgba(163, 230, 53, 0.1)',
           animation: visible ? 'pq-float 4s ease-in-out infinite' : 'none',
           opacity: visible ? 1 : 0,
           transform: visible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.96)',
@@ -105,8 +105,8 @@ export default function Welcome() {
         </h1>
 
         <p style={{
-          fontSize: 'clamp(16px, 2.5vw, 22px)', color: '#888',
-          marginTop: 16, marginBottom: 48, fontWeight: 400,
+          fontSize: 'clamp(16px, 2vw, 20px)', color: '#888',
+          marginTop: 12, marginBottom: 32, fontWeight: 400,
           opacity: subVisible ? 1 : 0,
           transform: subVisible ? 'translateY(0)' : 'translateY(20px)',
           transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
@@ -116,15 +116,14 @@ export default function Welcome() {
         </p>
 
         <div style={{
-          display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap',
+          display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap',
           opacity: btnsVisible ? 1 : 0,
-          transform: btnsVisible ? 'translateY(0)' : 'translateY(20px)',
-          transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
-          transitionDelay: '0.2s',
+          transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+          transitionDelay: '0.2s', marginBottom: 48,
         }}>
           <button onClick={() => navigate('/setup')} style={{
-            padding: '14px 32px', borderRadius: 12, border: 'none',
-            background: '#a3e635', color: '#000', fontSize: 16, fontWeight: 600,
+            padding: '12px 28px', borderRadius: 10, border: 'none',
+            background: '#a3e635', color: '#000', fontSize: 15, fontWeight: 600,
             cursor: 'pointer', transition: 'all 0.2s',
           }}
             onMouseEnter={e => { e.target.style.background = '#bef264'; e.target.style.transform = 'scale(1.02)'; }}
@@ -132,10 +131,9 @@ export default function Welcome() {
           >
             Get Started →
           </button>
-
           <button onClick={() => navigate('/ai')} style={{
-            padding: '14px 32px', borderRadius: 12, border: '1px solid #333',
-            background: 'transparent', color: '#fff', fontSize: 16, fontWeight: 500,
+            padding: '12px 28px', borderRadius: 10, border: '1px solid #333',
+            background: 'transparent', color: '#fff', fontSize: 15, fontWeight: 500,
             cursor: 'pointer', transition: 'all 0.2s',
           }}
             onMouseEnter={e => { e.target.style.borderColor = '#555'; e.target.style.background = 'rgba(255,255,255,0.04)'; }}
@@ -144,18 +142,46 @@ export default function Welcome() {
             Dashboard
           </button>
         </div>
+
+        {/* Setup Guide */}
+        <div style={{
+          opacity: tagVisible ? 1 : 0,
+          transform: tagVisible ? 'translateY(0)' : 'translateY(20px)',
+          transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+          transitionDelay: '0.4s',
+        }}>
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+            {[
+              { num: '1', title: 'Connect Database', desc: 'Link your Supabase project — your data stays yours' },
+              { num: '2', title: 'Add AI Keys', desc: 'Connect one or more AI providers (16 available)' },
+              { num: '3', title: 'Generate Briefs', desc: 'Type any idea and get a 15-tab strategic brief' },
+            ].map((s, i) => (
+              <div key={i} style={{
+                background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
+                borderRadius: 12, padding: '16px 20px', width: 200, textAlign: 'left',
+                transition: 'all 0.3s',
+              }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(163,230,53,0.3)'; e.currentTarget.style.background = 'rgba(163,230,53,0.04)'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}
+              >
+                <div style={{ fontSize: 11, fontWeight: 700, color: '#a3e635', letterSpacing: '1px', marginBottom: 4 }}>STEP {s.num}</div>
+                <div style={{ fontSize: 14, fontWeight: 600, color: '#fff', marginBottom: 4 }}>{s.title}</div>
+                <div style={{ fontSize: 12, color: '#666', lineHeight: 1.4 }}>{s.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Bottom tag */}
       <div style={{
-        position: 'absolute', bottom: 40, left: 0, right: 0, textAlign: 'center',
+        position: 'absolute', bottom: 32, left: 0, right: 0, textAlign: 'center',
         opacity: tagVisible ? 1 : 0,
-        transform: tagVisible ? 'translateY(0)' : 'translateY(16px)',
-        transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
-        transitionDelay: '0.3s',
+        transition: 'opacity 0.8s ease',
+        transitionDelay: '0.6s',
       }}>
-        <span style={{ color: '#555', fontSize: 14, letterSpacing: '0.02em' }}>
-          Free forever. Open source. Self-hosted.
+        <span style={{ color: '#555', fontSize: 13, letterSpacing: '0.02em' }}>
+          Free forever · Open source · Self-hosted · 16 AI providers
         </span>
       </div>
     </div>
