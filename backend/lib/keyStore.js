@@ -14,7 +14,25 @@ export class KeyStore {
       .eq('user_id', userId)
       .maybeSingle();
 
-    if (error || !data) return null;
+    if (error || !data) {
+      // Fall back to runtime config when database table doesn't exist
+      try {
+        const fs = await import('fs');
+        const path = await import('path');
+        const runtimePath = path.join(process.cwd(), 'config', 'runtime.json');
+        if (fs.existsSync(runtimePath)) {
+          const cfg = JSON.parse(fs.readFileSync(runtimePath, 'utf8'));
+          const providers = cfg.providers || {};
+          const keys = {};
+          for (const [provider, key] of Object.entries(providers)) {
+            if (key) keys[provider] = key;
+          }
+          keys.primaryProvider = Object.keys(keys)[0] || 'groq';
+          return keys;
+        }
+      } catch {}
+      return null;
+    }
 
     return {
       groq: data.groq_key || null,

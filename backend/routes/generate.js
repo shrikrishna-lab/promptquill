@@ -28,8 +28,6 @@ router.post('/', async (req, res) => {
       'Connection': 'keep-alive',
     });
 
-    const fullContent = [];
-    // Inject selected model per provider from user preferences
     const modelsConfig = selectedModels || {};
     const getModel = (providerId) => modelsConfig[providerId] || null;
 
@@ -39,15 +37,6 @@ router.post('/', async (req, res) => {
       ideaInput,
       preferredProvider,
       getModel,
-      (chunk) => {
-        if (chunk.type === 'provider_fallback') {
-          res.write(`data: ${JSON.stringify(chunk)}\n\n`);
-        }
-        if (chunk.content) {
-          fullContent.push(chunk.content);
-          res.write(`data: ${JSON.stringify({ type: 'content', content: chunk.content })}\n\n`);
-        }
-      }
     );
 
     const { data: brief, error } = await req.supabase
@@ -59,7 +48,7 @@ router.post('/', async (req, res) => {
         mode: mode.toUpperCase(),
         personality: personality.toUpperCase(),
         provider_used: result.provider,
-        tabs: { full_brief: fullContent.join('') },
+        tabs: { full_brief: result.content || '' },
       }])
       .select()
       .single();
@@ -67,15 +56,14 @@ router.post('/', async (req, res) => {
     if (error) {
       const okCodes = ['PGRST116', '42P01', 'PGRST205'];
       if (okCodes.includes(error.code) || error.message?.includes('Could not find the table')) {
-        // Table doesn't exist yet - return generated content without saving
-        res.write(`data: ${JSON.stringify({ type: 'done', briefId: null, provider: result.provider, providerName: result.providerName, content: fullContent.join(''), note: 'Brief generated but not saved - database needs setup' })}\n\n`);
+        res.write(`data: ${JSON.stringify({ type: 'done', briefId: null, provider: result.provider, providerName: result.providerName, content: result.content, note: 'Brief generated but not saved - setup database tables first' })}\n\n`);
         res.end();
         return;
       }
       throw error;
     }
 
-    res.write(`data: ${JSON.stringify({ type: 'done', briefId: brief.id, provider: result.provider, providerName: result.providerName })}\n\n`);
+    res.write(`data: ${JSON.stringify({ type: 'done', briefId: brief.id, provider: result.provider, providerName: result.providerName, content: result.content })}\n\n`);
     res.end();
   } catch (err) {
     console.error('[Generate] Error:', err.message);
