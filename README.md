@@ -1,274 +1,258 @@
-# PromptQuill
-
-> Turn any idea into a complete strategic brief in seconds.  
-> Open source. Self-hosted. Free forever. Your data stays yours.
-
 <div align="center">
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
-[![Self-Hosted](https://img.shields.io/badge/self--hosted-yes-blue)](https://github.com/shrikrishna-lab/promptquill)
-[![Open Source](https://img.shields.io/badge/open--source-true-purple)](https://github.com/shrikrishna-lab/promptquill)
-
+  <br>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&duration=2000&pause=500&color=A3E635&center=true&vCenter=true&width=500&lines=PromptQuill;AI+Brief+Generator;Open+Source;Self-Hosted" alt="Typing SVG" />
+  <br><br>
+  <p><strong>Turn any idea into a complete strategic brief in seconds.</strong><br>
+  <em>Open source · Self-hosted · Free forever · Your data stays yours</em></p>
+  <br>
+  <p>
+    <a href="https://github.com/shrikrishna-lab/promptquill/stargazers"><img src="https://img.shields.io/github/stars/shrikrishna-lab/promptquill?style=for-the-badge&logo=github&color=A3E635" alt="Stars"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-8B5CF6?style=for-the-badge" alt="License"></a>
+    <a href="https://nodejs.org"><img src="https://img.shields.io/badge/Node-%3E%3D18-22C55E?style=for-the-badge&logo=node.js" alt="Node"></a>
+    <a href="https://react.dev"><img src="https://img.shields.io/badge/React-18-3B82F6?style=for-the-badge&logo=react" alt="React"></a>
+    <br>
+    <img src="https://img.shields.io/badge/self--hosted-yes-06B6D4?style=for-the-badge" alt="Self-Hosted">
+    <img src="https://img.shields.io/badge/16_AI_Providers-available-EC4899?style=for-the-badge" alt="Providers">
+    <img src="https://img.shields.io/badge/telemetry-none-F59E0B?style=for-the-badge" alt="No Telemetry">
+  </p>
+  <br>
 </div>
 
-<p align="center">
-  <img src="docs/screenshots/generator.png" alt="PromptQuill brief generator" width="600">
-  <br>
-  <em>Type an idea → get a complete 15-tab strategic brief in seconds.</em>
-</p>
+---
+
+https://github.com/user-attachments/assets/6e1e5ef2-1e6f-4bcf-857a-8f7a987e8679
 
 ---
 
-## Introduction
+## ✦ Introduction
 
-PromptQuill is an open-source AI brief generator. You type any idea — a startup concept, a software feature, a content campaign — and it returns a complete, structured strategic brief with fifteen analysis sections in seconds. The application is fully self-hosted: it connects only to your own Supabase database, uses your own AI provider keys, and stores nothing on any shared infrastructure. There are no paid plans, no subscriptions, and no telemetry. Every instance runs independently and privately.
+**PromptQuill** is an open-source AI brief generator. You type any idea — a startup concept, a software feature, a content campaign — and it returns a **complete, structured strategic brief with fifteen analysis sections** in seconds.
 
-PromptQuill is designed for founders validating ideas, developers planning features, content strategists building campaigns, researchers organizing thoughts, and anyone who needs to move from a rough concept to a structured plan quickly.
+The application is **fully self-hosted**: it connects only to your own Supabase database, uses your own AI provider keys, and stores nothing on any shared infrastructure. **No paid plans. No subscriptions. No telemetry.** Every instance runs independently and privately.
 
----
-
-## Features
-
-### Brief Generation
-
-- **15-tab strategic briefs.** Every brief covers executive summary, problem statement, target market, competitive landscape, technical architecture, feature roadmap, go-to-market strategy, revenue model, team plan, risk analysis, financial projections, launch timeline, success metrics, investor narrative, and immediate next steps.
-- **6 AI modes.** Startup, Coding, Content, Creative, General, and Startup Lite. Each mode uses a specialized system prompt tailored to its domain.
-- **2 personality styles.** Bot delivers structured, analytical, data-driven output. Human uses a conversational, advisory tone.
-- **Live streaming.** Content appears as it generates. You do not wait for the full response.
-- **Persistent history.** Every brief is saved to your own database. You can browse, revisit, and share them.
-
-### AI Provider System
-
-- **16 supported providers.** OpenAI, Anthropic, xAI (Grok), Google Gemini, Groq, Mistral AI, DeepSeek, Cohere, Perplexity AI, Moonshot AI, Cerebras, OpenRouter, Cloudflare Workers AI, NVIDIA NIM, Ollama, and LM Studio.
-- **Automatic rotation and failover.** If one provider fails or hits a rate limit, the system tries the next available provider. No generation is lost.
-- **Free tier operation.** Every supported provider offers a free tier. You can run PromptQuill without spending anything on AI inference.
-- **Real-time provider visibility.** A badge shows which provider is active during generation.
-
-### Community
-
-- **Optional public sharing.** Briefs can be marked public within your installation.
-- **Community feed.** Browse publicly shared briefs from other users of your instance, filtered by AI mode.
-
-### Setup and Self-Hosting
-
-- **Clone and run.** Clone the repo, install dependencies, and start the application.
-- **Guided setup wizard.** A 6-step wizard handles database connection, AI key configuration, and table creation on first run.
-- **Your infrastructure.** Every component runs on your own Supabase project and your own machine. There is no central server.
-
-### Security
-
-- **No hardcoded credentials.** Every URL, key, and connection string is user-supplied through environment variables.
-- **Keys in your database only.** API keys are stored in your own Supabase database and are never returned to the frontend.
-- **Row-level security.** All database tables have RLS policies enforced.
-- **Zero telemetry.** The application makes no external network calls beyond your configured AI providers and your own Supabase project.
+Built for founders validating ideas, developers planning features, content strategists building campaigns, researchers organizing thoughts — anyone who needs to move from a rough concept to a structured plan quickly.
 
 ---
 
-## Installation
+## ✦ Features
 
-### Requirements
+### 📋 Brief Generation
+- **15-tab strategic briefs** — Executive summary, problem statement, target market, competitive landscape, technical architecture, feature roadmap, go-to-market strategy, revenue model, team plan, risk analysis, financial projections, launch timeline, success metrics, investor narrative, and immediate next steps.
+- **6 AI modes** — Startup, Coding, Content, Creative, General, and Startup Lite. Each with a specialized system prompt.
+- **2 personality styles** — Bot (structured, analytical, data-driven) or Human (conversational, advisory).
+- **Live streaming** — Content appears as it generates. No waiting for full responses.
+- **Persistent history** — Every brief saved to your own database. Browse, revisit, and share.
 
-Before installing, you need:
+### 🤖 AI Provider System
+- **16 supported providers** — OpenAI, Anthropic, xAI (Grok), Google Gemini, Groq, Mistral AI, DeepSeek, Cohere, Perplexity AI, Moonshot AI, Cerebras, OpenRouter, Cloudflare Workers AI, NVIDIA NIM, Ollama, and LM Studio.
+- **Automatic rotation & failover** — If one provider fails or hits a rate limit, the system tries the next available.
+- **Free tier operation** — Multiple providers offer free tiers. Run PromptQuill without spending on AI inference.
+- **Real-time provider badge** — See which provider is active during generation.
 
-- **Node.js 18 or higher.** Download from nodejs.org or install via your system package manager.
-- **A Supabase account (free).** Sign up at supabase.com and create a new project. The free tier is sufficient.
-- **At least one AI provider API key.** Groq is recommended for first-time setup — it offers 14,400 free requests per day. Sign up at console.groq.com and generate an API key.
+### 🌐 Community
+- **Optional public sharing** — Mark briefs as public within your installation.
+- **Community feed** — Browse shared briefs from other users, filtered by mode.
 
-### Quick Start
+### 🔒 Security
+- **No hardcoded credentials** — Every URL, key, and connection is user-supplied through environment variables.
+- **Keys in your database only** — API keys stored in your own Supabase, never returned to the frontend.
+- **Row-level security** — Enforced on all database tables.
+- **Zero telemetry** — No external network calls beyond your configured providers and your own Supabase.
+
+---
+
+## ✦ Quick Start
 
 ```bash
+# Clone the repository
 git clone https://github.com/shrikrishna-lab/promptquill.git
 cd promptquill
+
+# Set up environment
 cp .env.example .env
+
+# Install dependencies
 npm install
+
+# Start the application (frontend + backend)
 npm run dev
 ```
 
-After running `npm run dev`, open the URL shown in your terminal (typically http://localhost:3001). The setup wizard will guide you through connecting your Supabase database and adding your first AI provider key.
+Open **http://localhost:3001** in your browser. The setup wizard will guide you through connecting your Supabase database and adding your first AI provider key. You'll be generating briefs in under 5 minutes.
 
 ---
 
-## Free AI Provider Keys
+## ✦ 16 AI Providers
 
-| Provider | Type | Best For | Sign Up |
-|---|---|---|---|---|
-| OpenAI | Cloud (paid) | General purpose, code, reasoning | platform.openai.com |
-| Anthropic (Claude) | Cloud (paid) | Analysis, coding, long context | console.anthropic.com |
-| xAI (Grok) | Cloud (paid) | Reasoning, code | console.x.ai |
-| Google Gemini | Cloud (free tier) | Speed, quality | aistudio.google.com |
-| Groq | Cloud (free tier) | Speed, open models | console.groq.com |
-| Mistral AI | Cloud (free tier) | Multilingual, code | console.mistral.ai |
-| DeepSeek | Cloud (free tier) | Code, reasoning | platform.deepseek.com |
-| Cohere | Cloud (paid) | RAG, embeddings | dashboard.cohere.com |
-| Perplexity AI | Cloud (paid) | Search, research | docs.perplexity.ai |
-| Moonshot AI (Kimi) | Cloud (paid) | Chinese language, long context | platform.moonshot.cn |
-| Cerebras | Cloud (free tier) | Fast inference | cloud.cerebras.ai |
-| OpenRouter | Cloud (free tier) | Model variety | openrouter.ai |
-| Cloudflare Workers AI | Cloud (free tier) | Edge deployment | dash.cloudflare.com |
-| NVIDIA NIM | Cloud (free tier) | Enterprise models | build.nvidia.com |
-| Ollama | Local (free) | Private, offline | ollama.com |
-| LM Studio | Local (free) | Private, offline | lmstudio.ai |
+<table>
+  <thead>
+    <tr>
+      <th>Provider</th>
+      <th>Type</th>
+      <th>Best For</th>
+      <th>Sign Up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>🧠 <strong>OpenAI</strong></td><td>Cloud · Paid</td><td>General purpose, code, reasoning</td><td><a href="https://platform.openai.com">platform.openai.com</a></td></tr>
+    <tr><td>🎭 <strong>Anthropic (Claude)</strong></td><td>Cloud · Paid</td><td>Analysis, coding, long context</td><td><a href="https://console.anthropic.com">console.anthropic.com</a></td></tr>
+    <tr><td>💚 <strong>xAI (Grok)</strong></td><td>Cloud · Paid</td><td>Reasoning, code</td><td><a href="https://console.x.ai">console.x.ai</a></td></tr>
+    <tr><td>🔵 <strong>Google Gemini</strong></td><td>Cloud · Free tier</td><td>Speed, output quality</td><td><a href="https://aistudio.google.com">aistudio.google.com</a></td></tr>
+    <tr><td>🟢 <strong>Groq</strong></td><td>Cloud · Free tier</td><td>Speed, open models</td><td><a href="https://console.groq.com">console.groq.com</a></td></tr>
+    <tr><td>🟠 <strong>Mistral AI</strong></td><td>Cloud · Free tier</td><td>Multilingual, code</td><td><a href="https://console.mistral.ai">console.mistral.ai</a></td></tr>
+    <tr><td>🔮 <strong>DeepSeek</strong></td><td>Cloud · Free tier</td><td>Code, reasoning</td><td><a href="https://platform.deepseek.com">platform.deepseek.com</a></td></tr>
+    <tr><td>🌿 <strong>Cohere</strong></td><td>Cloud · Paid</td><td>RAG, embeddings</td><td><a href="https://dashboard.cohere.com">dashboard.cohere.com</a></td></tr>
+    <tr><td>🔍 <strong>Perplexity AI</strong></td><td>Cloud · Paid</td><td>Search, research</td><td><a href="https://docs.perplexity.ai">docs.perplexity.ai</a></td></tr>
+    <tr><td>🌙 <strong>Moonshot AI (Kimi)</strong></td><td>Cloud · Paid</td><td>Chinese language, long context</td><td><a href="https://platform.moonshot.cn">platform.moonshot.cn</a></td></tr>
+    <tr><td>⚡ <strong>Cerebras</strong></td><td>Cloud · Free tier</td><td>Fast inference</td><td><a href="https://cloud.cerebras.ai">cloud.cerebras.ai</a></td></tr>
+    <tr><td>🔄 <strong>OpenRouter</strong></td><td>Cloud · Free tier</td><td>Model variety</td><td><a href="https://openrouter.ai">openrouter.ai</a></td></tr>
+    <tr><td>☁️ <strong>Cloudflare Workers AI</strong></td><td>Cloud · Free tier</td><td>Edge deployment</td><td><a href="https://dash.cloudflare.com">dash.cloudflare.com</a></td></tr>
+    <tr><td>🟩 <strong>NVIDIA NIM</strong></td><td>Cloud · Free tier</td><td>Enterprise models</td><td><a href="https://build.nvidia.com">build.nvidia.com</a></td></tr>
+    <tr><td>🦙 <strong>Ollama</strong></td><td>Local · Free</td><td>Private, offline</td><td><a href="https://ollama.com">ollama.com</a></td></tr>
+    <tr><td>💻 <strong>LM Studio</strong></td><td>Local · Free</td><td>Private, offline</td><td><a href="https://lmstudio.ai">lmstudio.ai</a></td></tr>
+  </tbody>
+</table>
 
-You only need one provider key to get started. Adding more providers improves reliability through automatic failover.
+> You only need **one** provider key to get started. Adding more improves reliability through automatic failover.
 
 ---
 
-## Usage
+## ✦ Usage
 
-### Startup Mode
-
+### 🚀 Startup Mode
 Optimized for evaluating new business ideas and investment opportunities.
 
-**Best used for:** Validating a startup concept before building it. Preparing for a pitch meeting. Structuring a business plan for the first time. Assessing market viability of an idea.
+**Best used for:** Validating a startup concept. Preparing for a pitch. Structuring a business plan. Assessing market viability.
 
-**Example input:** "A food delivery app for college students in India that delivers snacks from local hostels and dorms."
+**Example input:** *"A food delivery app for college students in India that delivers snacks from local hostels and dorms."*
 
-**What the output covers:** Executive summary, problem statement, target market and personas, competitive landscape, revenue model, financial projections, investor narrative.
-
-### Coding Mode
-
+### 💻 Coding Mode
 Optimized for planning software projects and technical features.
 
-**Best used for:** Designing a new feature or service. Planning a system architecture. Preparing a technical roadmap for a sprint or quarter. Evaluating technology choices and trade-offs.
+**Best used for:** Designing new features. Planning system architecture. Preparing technical roadmaps. Evaluating technology choices.
 
-**Example input:** "A real-time collaborative code editor with built-in AI pair programming and terminal sharing."
+**Example input:** *"A real-time collaborative code editor with built-in AI pair programming and terminal sharing."*
 
-**What the output covers:** Technical architecture, feature roadmap, risk analysis, team and hiring plan, launch timeline.
-
-### Content Mode
-
+### 📝 Content Mode
 Optimized for developing content strategies and marketing campaigns.
 
-**Best used for:** Planning a content calendar for a blog or social channel. Developing a brand voice and positioning. Structuring a product launch campaign. Building a distribution strategy for organic growth.
+**Best used for:** Planning content calendars. Developing brand voice. Structuring product launches. Building distribution strategies.
 
-**Example input:** "A weekly newsletter for indie hackers about building AI-powered SaaS products."
+**Example input:** *"A weekly newsletter for indie hackers about building AI-powered SaaS products."*
 
-**What the output covers:** Target market, go-to-market strategy, revenue model, success metrics and KPIs, immediate next steps.
-
-### Creative Mode
-
+### 🎨 Creative Mode
 Optimized for brainstorming creative concepts and artistic direction.
 
-**Best used for:** Developing a brand identity or visual direction. Planning a creative campaign. Generating concepts for a design project. Exploring narrative and storytelling angles.
+**Best used for:** Developing brand identity. Planning creative campaigns. Generating design concepts. Exploring narrative angles.
 
-**Example input:** "An interactive art installation in a public park that uses wind data to generate poetry."
+**Example input:** *"An interactive art installation in a public park that uses wind data to generate poetry."*
 
-**What the output covers:** Executive summary, competitive landscape (creative context), risk analysis, launch timeline, immediate next steps.
-
-### General Mode
-
+### ⚡ General Mode
 Optimized for analyzing any idea from multiple angles without domain specialization.
 
-**Best used for:** Quick idea validation when you are not sure which mode fits. Exploring a concept from business, technical, and creative perspectives simultaneously. Getting a structured overview of a vague or early-stage idea.
+**Best used for:** Quick idea validation. Multi-angle exploration. Getting structured overviews of vague ideas.
 
-**Example input:** "A mobile app that connects travelers with local chefs for home-cooked meals."
+**Example input:** *"A mobile app that connects travelers with local chefs for home-cooked meals."*
 
-**What the output covers:** All fifteen tabs, with balanced depth across every section.
+### 🔍 Startup Lite Mode
+Optimized for rapid idea validation with concise, punchy output.
 
-### Startup Lite Mode
+**Best used for:** Fast ideation sessions. Testing many ideas quickly. Teaching and workshop settings.
 
-Optimized for rapid idea validation with concise output.
+**Example input:** *"A subscription box for rare spices delivered monthly."*
 
-**Best used for:** Fast, repeated ideation sessions. Testing many ideas quickly to identify the most promising ones. Getting a structured overview without committing to a full brief. Teaching or workshop settings where multiple examples are needed.
+### 🧠 Personality Styles
 
-**Example input:** "A subscription box for rare spices delivered monthly."
-
-**What the output covers:** All fifteen tabs, each 100 to 150 words, focused on the most critical insight per section.
-
-### Personality Styles
-
-**Bot personality** produces structured, analytical output with clear headers, bullet points, and data-driven recommendations. It reads like a professional consulting report. Use Bot when you need a formal, directly scannable brief for stakeholders or documentation.
-
-**Human personality** uses a conversational, advisory tone with personal language ("you", "your"). It reads like advice from an experienced mentor. Use Human when you are exploring an idea for yourself and want a more engaging, readable brief that feels like a discussion rather than a report.
+| Style | Description | Best For |
+|---|---|---|
+| **Bot** 🤖 | Structured, analytical output with headers, bullet points, and data-driven recommendations | Formal briefs, stakeholder presentations, documentation |
+| **Human** 🗣️ | Conversational, advisory tone using personal language ("you", "your") | Personal exploration, brainstorming, mentoring scenarios |
 
 ---
 
-## Commands
+## ✦ Commands
 
 | Command | Description |
 |---|---|
-| `npm run dev` | Starts both frontend and backend development servers. Frontend runs on port 3001, backend on port 5000. |
-| `npm run dev:frontend` | Starts only the frontend development server. |
-| `npm run dev:backend` | Starts only the backend API server. |
-| `npm install` | Installs all dependencies across both frontend and backend. |
-| `npm run build` | Compiles the frontend for production deployment. Output goes to the `dist` folder. |
-| `npm run publish:github` | Runs the automated GitHub publishing script for publishing forks. |
+| `npm run dev` | Starts both frontend (`:3001`) and backend (`:5000`) development servers |
+| `npm run dev:frontend` | Starts only the frontend development server |
+| `npm run dev:backend` | Starts only the backend API server |
+| `npm install` | Installs all dependencies across frontend and backend |
+| `npm run build` | Compiles the frontend for production deployment |
+| `npm run publish:github` | Runs the automated GitHub publishing script |
 
 ---
 
-## Environment Variables
+## ✦ Environment Variables
 
 | Variable | Required | Description |
-|---|---|---|---|
-| `VITE_SUPABASE_URL` | Yes | Your Supabase project URL |
-| `VITE_SUPABASE_ANON_KEY` | Yes | Your Supabase anonymous key |
-| `VITE_BACKEND_URL` | Yes | Backend server URL |
-| `SUPABASE_URL` | Yes | Supabase URL for backend connection |
-| `SUPABASE_SERVICE_KEY` | Yes | Supabase service role key |
-| `PORT` | No | Backend port (default: 5000) |
-| `NODE_ENV` | No | Environment mode (default: development) |
+|---|---|---|
+| `VITE_SUPABASE_URL` | ✅ Yes | Your Supabase project URL |
+| `VITE_SUPABASE_ANON_KEY` | ✅ Yes | Your Supabase anonymous key |
+| `VITE_BACKEND_URL` | ✅ Yes | Backend server URL |
+| `SUPABASE_URL` | ✅ Yes | Supabase URL for backend connection |
+| `SUPABASE_SERVICE_KEY` | ✅ Yes | Supabase service role key |
+| `PORT` | ❌ No | Backend port (default: 5000) |
+| `NODE_ENV` | ❌ No | Environment mode (default: development) |
 
-AI provider keys are set through the setup wizard and stored in your own database. You do not need to add them to `.env`.
-
-At least one AI provider key is required. All others are optional.
+> AI provider keys are set through the **setup wizard** and stored in your own database. You do not need to add them to `.env`.
 
 ---
 
-## Your Data and Privacy
+## ✦ Your Data & Privacy
 
-PromptQuill connects only to the Supabase project you create. No data is sent to any central server. Your API keys are stored in your own database and are never returned to the frontend or logged by the application.
+PromptQuill connects only to the **Supabase project you create**. No data is sent to any central server. Your API keys are stored in your own database and are never returned to the frontend.
 
-There is no analytics, no telemetry, and no phone-home mechanism. The application makes no network calls beyond the AI providers you configure and your own Supabase project. The original developers have zero access to your data, your keys, or your instance.
+**There is no analytics, no telemetry, and no phone-home mechanism.** The application makes no network calls beyond the AI providers you configure and your own Supabase project. The original developers have zero access to your data, your keys, or your instance.
 
-Every installation is fully independent and private. What you generate stays on your infrastructure.
-
----
-
-## Contributing
-
-### How to Contribute
-
-Fork the repository, create a branch for your change, make your changes, and submit a pull request. The maintainers review pull requests and provide feedback before merging.
-
-### Contribution Guidelines
-
-- Follow the existing code style and patterns used throughout the project.
-- Write clear commit messages that describe what changed and why.
-- Submit one feature or fix per pull request.
-- Test your changes before submitting.
-- Update documentation if your change affects how the application is used or configured.
-
-### Good First Issues
-
-Issues labeled "good first issue" on GitHub are suitable for first-time contributors. Comment on the issue before starting work to let others know you are working on it and to avoid duplicate effort.
-
-### Reporting Bugs
-
-When reporting a bug, include the steps to reproduce the issue, what you expected to happen versus what actually happened, your Node.js version and operating system, and any relevant error messages. Open a GitHub issue with this information.
+**Every installation is fully independent and private.** What you generate stays on your infrastructure.
 
 ---
 
-## Tech Stack
+## ✦ Contributing
+
+1. **Fork** the repository
+2. **Create a branch** for your change
+3. **Make your changes** — one feature or fix per branch
+4. **Test** your changes before submitting
+5. **Submit a pull request** with a clear description
+
+**Reporting bugs?** Include steps to reproduce, expected vs actual behavior, Node.js version, OS, and relevant error messages.
+
+---
+
+## ✦ Tech Stack
+
+<div align="center">
 
 | Layer | Technology |
 |---|---|
-| Frontend | React 18, Vite |
-| Backend | Node.js, Express |
-| Database | Supabase (PostgreSQL) |
-| Auth | Supabase Auth |
-| AI Providers | 16 providers: OpenAI, Anthropic, xAI (Grok), Google Gemini, Groq, Mistral AI, DeepSeek, Cohere, Perplexity AI, Moonshot AI, Cerebras, OpenRouter, Cloudflare Workers AI, NVIDIA NIM, Ollama, LM Studio |
+| **Frontend** | <img src="https://img.shields.io/badge/React-18-3B82F6?logo=react"> <img src="https://img.shields.io/badge/Vite-8-646CFF?logo=vite"> |
+| **Backend** | <img src="https://img.shields.io/badge/Node.js-Express-22C55E?logo=nodedotjs"> |
+| **Database** | <img src="https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?logo=supabase"> |
+| **AI Providers** | <img src="https://img.shields.io/badge/16-Providers-A3E635"> |
+
+</div>
 
 ---
 
-## License
+## ✦ License
 
-MIT License. Free to use, modify, and distribute. See the [LICENSE](LICENSE) file for the full terms.
+<div align="center">
+
+**MIT License** — Free to use, modify, and distribute.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-8B5CF6?style=for-the-badge)](LICENSE)
 
 ---
 
-<p align="center">
-  Built with care by the open-source community.<br>
-  <a href="https://github.com/shrikrishna-lab/promptquill">GitHub</a><br>
-  Star this repo if PromptQuill helped you ⭐
+<p>
+  <a href="https://github.com/shrikrishna-lab/promptquill">
+    <img src="https://img.shields.io/badge/GitHub-shrikrishna--lab/promptquill-181717?style=for-the-badge&logo=github" alt="GitHub">
+  </a>
+  <br><br>
+  <strong>⭐ Star this repo if PromptQuill helped you ⭐</strong><br>
+  <em>Built with care by the open-source community</em>
 </p>
+
+</div>
