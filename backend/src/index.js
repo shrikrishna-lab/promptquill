@@ -21,28 +21,20 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(securityHeaders); // Security headers (helmet)
 // Strict CORS whitelist — only production domain + local dev allowed
-const ALLOWED_ORIGINS = [
-  process.env.FRONTEND_URL,
-  'http://localhost:5173',
-  'http://localhost:3001',
-  'http://localhost:3000',
-  'http://localhost:3002',
-].filter(Boolean);
+const FRONTEND_URL = process.env.FRONTEND_URL;
 
 app.use(cors({
   origin: function (origin, callback) {
     // Allow server-to-server requests (no origin header)
-    if (!origin) {
-      callback(null, true);
-      return;
-    }
-    
-    if (ALLOWED_ORIGINS.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.warn(`🚫 CORS blocked request from: ${origin}`);
-      callback(new Error('Not allowed by CORS'));
-    }
+    if (!origin) { callback(null, true); return; }
+    // Allow configured frontend URL
+    if (origin === FRONTEND_URL) { callback(null, true); return; }
+    // Allow any localhost origin (any port)
+    if (/^https?:\/\/localhost(:\d+)?$/.test(origin)) { callback(null, true); return; }
+    // Allow any 127.0.0.1 origin (any port)
+    if (/^https?:\/\/127\.0\.0\.1(:\d+)?$/.test(origin)) { callback(null, true); return; }
+    console.warn(`🚫 CORS blocked request from: ${origin}`);
+    callback(new Error('Not allowed by CORS'));
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS', 'HEAD'],
