@@ -4,7 +4,7 @@ import TopBar from '../components/TopBar';
 import BottomInput from '../components/BottomInput';
 import LoadingSpinner from '../components/LoadingSpinner';
 import GenerationRetry from '../components/GenerationRetry';
-import Mascot from '../components/Mascot';
+
 import { supabase } from '../lib/supabase';
 import { fetchClarifyingQuestions, generateBrief, generateInitialTabs, generateTabContent, generateStressTest, PromptMemory, streamImageAnalysis } from '../lib/ai';
 import { SAFETY_GATE_MESSAGE } from '../lib/safetyGate';
@@ -2032,56 +2032,43 @@ Use low temperature for CODING and GENERAL precision, medium temperature for CON
           )}
 
           {(!currentSession?.id && !result && !loading && !expanderVisible) ? (
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', width: '100%', height: '100%' }}>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '60px 40px', maxWidth: 900, margin: '0 auto' }}>
 
-              {/* DESKTOP SPLASH */}
-              <div className="desktop-only-input animate-fade-in" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-                <div style={{ textAlign: 'center', position: 'relative', marginTop: '-5vh' }}>
-                  <h1 style={{ fontSize: '72px', fontWeight: '900', lineHeight: '1.1', letterSpacing: '-3px', fontStyle: 'italic', margin: 0 }}>
-                    <span style={{ color: '#a3e635', textShadow: '0 0 30px rgba(163, 230, 53, 0.25)' }}>Generate</span><br />
-                    <span style={{ color: '#fff' }}>Your Prompt</span>
-                  </h1>
-                  <p style={{ color: '#888', marginTop: '24px', fontSize: '13px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', letterSpacing: '1px', fontWeight: '700' }}>
-                    <span className="animate-pulse-glow" style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#a3e635' }} />
-                    POWERING INTELLIGENT ARCHITECTURE
-                  </p>
-                </div>
+              {/* Hero */}
+              <div style={{ textAlign: 'center', marginBottom: 40 }}>
+                <h1 style={{ fontSize: 'clamp(48px, 6vw, 80px)', fontWeight: 900, lineHeight: 1.05, letterSpacing: '-3px', fontStyle: 'italic', margin: 0 }}>
+                  <span style={{ color: '#a3e635' }}>Generate</span><br />
+                  <span style={{ color: '#fff' }}>Your Prompt</span>
+                </h1>
+                <p style={{ color: '#666', marginTop: 20, fontSize: 13, letterSpacing: '2px', fontWeight: 700 }}>
+                  POWERING INTELLIGENT ARCHITECTURE
+                </p>
               </div>
 
-              {/* DESKTOP VIEW - Mascot + Chips + Input */}
-              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '40px 20px', maxWidth: 800, margin: '0 auto' }}>
-                <div style={{ textAlign: 'center', marginBottom: 32 }}>
-                  <Mascot />
-                  <h1 style={{ fontSize: '28px', fontWeight: '900', lineHeight: '1.2', letterSpacing: '-1px', margin: '20px 0 0 0' }}>
-                    <span style={{ color: '#fff' }}>How can I help </span>
-                    <span style={{ color: '#a3e635' }}>you</span>
-                    <span style={{ color: '#fff' }}> today?</span>
-                  </h1>
-                  <p style={{ color: '#888', marginTop: '12px', fontSize: '13px', letterSpacing: '1px', fontWeight: '700' }}>
-                    AI briefs in 30 seconds · 6 modes · 16 providers
-                  </p>
-                </div>
+              {/* Suggestion Chips */}
+              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 28 }}>
+                {[
+                  { icon: '💡', text: 'SaaS for students' },
+                  { icon: '🚀', text: 'AI tutor app' },
+                  { icon: '💻', text: 'Build a portfolio' },
+                  { icon: '🎨', text: 'Logo design' },
+                  { icon: '🎬', text: 'Video script' },
+                  { icon: '📱', text: 'Mobile app idea' }
+                ].map((chip, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSuggestionInput(chip.text)}
+                    style={{ padding: '10px 18px', background: '#0d0d0d', border: '1px solid #1a1a1a', borderRadius: '99px', color: '#666', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, transition: 'all 0.15s' }}
+                    onMouseEnter={e => { e.currentTarget.style.background = '#111'; e.currentTarget.style.borderColor = '#333'; e.currentTarget.style.color = '#fff'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = '#0d0d0d'; e.currentTarget.style.borderColor = '#1a1a1a'; e.currentTarget.style.color = '#666'; }}
+                  >
+                    <span>{chip.icon}</span> {chip.text}
+                  </button>
+                ))}
+              </div>
 
-                <div className="animate-fade-in suggestion-chips-row" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center', marginBottom: 24 }}>
-                  {[
-                    { icon: '💡', text: 'SaaS for students' },
-                    { icon: '🚀', text: 'AI tutor app' },
-                    { icon: '💻', text: 'Build a portfolio' },
-                    { icon: '🎨', text: 'Logo design' },
-                    { icon: '🎬', text: 'Video script' },
-                    { icon: '📱', text: 'Mobile app idea' }
-                  ].map((chip, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setSuggestionInput(chip.text)}
-                      style={{ padding: '12px 20px', backgroundColor: '#111', border: '1px solid #1a1a1a', borderRadius: '99px', color: '#666', fontSize: '13px', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', transition: '0.2s' }}
-                      onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#333'; e.currentTarget.style.color = '#fff'; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#1a1a1a'; e.currentTarget.style.color = '#666'; }}
-                    >
-                      <span>{chip.icon}</span> {chip.text}
-                    </button>
-                  ))}
-                </div>
+              {/* Prompt Input */}
+              <div style={{ width: '100%', maxWidth: 700 }}>
                 <BottomInput onGenerate={handleGenerate} loading={loading} isCentered={true} isSidebarOpen={isSidebarOpen} externalInput={suggestionInput} mode={bottomInputMode} setMode={setBottomInputMode} isPro={true} />
               </div>
 

@@ -108,210 +108,74 @@ const Sidebar = ({ profile, sessions, currentSessionId, onNewSession, onSessionS
   return (
     <>
       {/* DESKTOP SIDEBAR */}
-      <div className="sidebar" style={{
-        width: '280px',
-        height: '100vh',
-        backgroundColor: '#0d0d0d',
-        borderRight: '1px solid #222222',
-        display: 'flex',
-        flexDirection: 'column',
-        position: 'fixed',
-        left: 0,
-        top: 0,
+      <div style={{
+        width: 260, height: '100vh', background: '#0a0a0a', borderRight: '1px solid #141414',
+        display: 'flex', flexDirection: 'column', position: 'fixed', left: 0, top: 0,
         transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
-        transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        zIndex: 100
+        transition: 'transform 0.3s ease', zIndex: 100,
       }}>
-        <div style={{ padding: '24px', flex: 1, overflowY: 'auto' }} className="no-scrollbar">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
-            <h1 style={{ fontSize: '22px', fontWeight: '800', letterSpacing: '-0.5px' }}>
-              Prompt<span style={{ color: '#fff' }}> Quill</span>
-            </h1>
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <button onClick={onNewSession} style={{ background: '#1a1a2e', border: '1px solid #2a2a4a', padding: '6px', borderRadius: '6px', color: '#6366f1' }}>
-                <Plus size={16} />
-              </button>
-              <button className="mobile-floating-toggle" onClick={onToggle} style={{ background: 'transparent', border: 'none', color: '#888', padding: '6px', cursor: 'pointer', display: 'none', alignItems: 'center', justifyContent: 'center' }}>
-                ✕
-              </button>
-            </div>
+        <div style={{ padding: '20px 16px', flex: 1, overflowY: 'auto' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
+            <span style={{ fontSize: 18, fontWeight: 800, letterSpacing: '-0.5px', color: '#fff' }}>PromptQuill</span>
+            <button onClick={onNewSession} style={{ width: 28, height: 28, borderRadius: 6, background: '#141414', border: '1px solid #1f1f1f', color: '#888', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Plus size={14} />
+            </button>
           </div>
 
-          <div style={{ marginBottom: '32px' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <Link to="/ai" style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '10px 12px', borderRadius: '8px', color: '#fff', textDecoration: 'none', backgroundColor: 'rgba(255,255,255,0.05)', fontSize: '13px', fontWeight: '600' }}>
-                <Home size={18} color="#a3e635" /> Dashboard
-              </Link>
-
-
-              {/* Feature Pages */}
-              <div style={{ paddingTop: '12px', borderTop: '1px solid rgba(163, 230, 53, 0.1)' }}>
-                <div style={{ fontSize: '11px', fontWeight: '700', color: '#666', textTransform: 'uppercase', marginBottom: '8px' }}>Tools</div>
-                <Link to="/graveyard" style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '10px 12px', borderRadius: '8px', color: '#888', textDecoration: 'none', fontSize: '13px', fontWeight: '600' }}>
-                  <Trash2 size={18} /> Graveyard
-                </Link>
-                <Link to="/remixer" style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '10px 12px', borderRadius: '8px', color: '#888', textDecoration: 'none', fontSize: '13px', fontWeight: '600' }}>
-                  <Lightbulb size={18} /> Idea Remixer
-                </Link>
-                <Link to="/battles" style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '10px 12px', borderRadius: '8px', color: '#888', textDecoration: 'none', fontSize: '13px', fontWeight: '600' }}>
-                  <Swords size={18} /> Prompt Battle
-                </Link>
-              </div>
-
-              <Link to="/settings" style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '10px 12px', borderRadius: '8px', color: '#888', textDecoration: 'none', fontSize: '13px', fontWeight: '600' }}>
-                <Settings size={18} /> Settings
-              </Link>
-            </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Link to="/ai" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 6, color: '#fff', textDecoration: 'none', background: 'rgba(255,255,255,0.04)', fontSize: 13, fontWeight: 600 }}>
+              <Home size={16} color="#a3e635" /> Dashboard
+            </Link>
+            <div style={{ fontSize: 10, fontWeight: 700, color: '#444', textTransform: 'uppercase', letterSpacing: '1px', marginTop: 20, marginBottom: 6, paddingLeft: 10 }}>Tools</div>
+            <Link to="/graveyard" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 6, color: '#666', textDecoration: 'none', fontSize: 13, fontWeight: 500 }}>
+              <Trash2 size={15} /> Graveyard
+            </Link>
+            <Link to="/remixer" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 6, color: '#666', textDecoration: 'none', fontSize: 13, fontWeight: 500 }}>
+              <Lightbulb size={15} /> Idea Remixer
+            </Link>
+            <Link to="/battles" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 6, color: '#666', textDecoration: 'none', fontSize: 13, fontWeight: 500 }}>
+              <Swords size={15} /> Prompt Battle
+            </Link>
+            <Link to="/settings" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 6, color: '#666', textDecoration: 'none', fontSize: 13, fontWeight: 500, marginTop: 4 }}>
+              <Settings size={15} /> Settings
+            </Link>
           </div>
 
-          <div style={{ marginBottom: '16px' }}>
-            <label style={{ fontSize: '11px', fontWeight: '700', color: '#888', textTransform: 'uppercase', display: 'block' }}>HISTORY</label>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            {sessions.map((session) => (
-              <div
-                key={session.id}
-                onDoubleClick={() => onRename(session.id)}
-                onContextMenu={(e) => { e.preventDefault(); onDelete(session); }}
-                onClick={() => onSessionSelect(session.id)}
-                style={{
-                  padding: '12px',
-                  borderRadius: '8px',
-                  cursor: 'pointer',
-                  backgroundColor: currentSessionId === session.id ? 'rgba(163, 230, 53, 0.04)' : 'transparent',
-                  borderLeft: currentSessionId === session.id ? '2px solid #a3e635' : '2px solid transparent',
-                  transition: 'all 0.3s var(--ease-premium)',
-                  marginBottom: '4px'
-                }}
+          <div style={{ fontSize: 10, fontWeight: 700, color: '#444', textTransform: 'uppercase', letterSpacing: '1px', marginTop: 24, marginBottom: 8, paddingLeft: 10 }}>History</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            {sessions.slice(0, 20).map((session) => (
+              <div key={session.id} onClick={() => onSessionSelect(session.id)}
+                style={{ padding: '8px 10px', borderRadius: 6, cursor: 'pointer', background: currentSessionId === session.id ? 'rgba(163,230,53,0.04)' : 'transparent', borderLeft: currentSessionId === session.id ? '2px solid #a3e635' : '2px solid transparent', transition: '0.15s' }}
+                onMouseEnter={e => { if (currentSessionId !== session.id) e.currentTarget.style.background = 'rgba(255,255,255,0.02)'; }}
+                onMouseLeave={e => { if (currentSessionId !== session.id) e.currentTarget.style.background = 'transparent'; }}
               >
-                <div style={{ fontSize: '12px', fontWeight: currentSessionId === session.id ? '700' : '400', color: currentSessionId === session.id ? '#fff' : '#888', marginBottom: '8px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                  {session.title || 'Untitled Session'}
+                <div style={{ fontSize: 12, fontWeight: currentSessionId === session.id ? 600 : 400, color: currentSessionId === session.id ? '#fff' : '#666', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 2 }}>
+                  {session.title || 'Untitled'}
                 </div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '8px' }}>
-                  {session.versions?.map(v => (
-                    <button
-                      key={v.id}
-                      onClick={(e) => { e.stopPropagation(); onVersionSelect(v); }}
-                      style={{
-                        fontSize: '9px',
-                        padding: '2px 6px',
-                        borderRadius: '4px',
-                        backgroundColor: v.version_number === 1 ? '#1a1a1a' : 'rgba(109, 40, 217, 0.2)',
-                        color: v.version_number === 1 ? '#666' : '#a78bfa',
-                        border: v.version_number === 1 ? 'none' : '1px solid #6d28d9',
-                        cursor: 'pointer',
-                        fontWeight: '700'
-                      }}
-                    >
-                      v{v.version_number}
-                    </button>
-                  ))}
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span
-                    className={`pill-badge pill-${(session.mode?.toLowerCase() || 'general').replace(/\s+/g, '-')}`}
-                    style={{
-                      boxShadow: session.mode === 'STARTUP' || session.mode === 'STARTUP LITE' ? '0 0 6px rgba(249, 115, 22, 0.3)' :
-                        session.mode === 'CODING' ? '0 0 6px rgba(59, 130, 246, 0.3)' :
-                          session.mode === 'CREATIVE' ? '0 0 6px rgba(219, 39, 119, 0.3)' :
-                            session.mode === 'BUSINESS' ? '0 0 6px rgba(139, 92, 246, 0.3)' :
-                              session.mode === 'ANALYTICS' ? '0 0 6px rgba(6, 182, 212, 0.3)' :
-                                'none'
-                    }}
-                  >
-                    {session.mode || 'GENERAL'}
-                  </span>
-                  <span style={{ fontSize: '10px', color: '#444' }}>{session.created_at_human || 'Just now'}</span>
+                <div style={{ fontSize: 10, color: '#444', display: 'flex', gap: 8 }}>
+                  <span>{session.mode || 'GENERAL'}</span>
+                  <span>{session.created_at_human || 'Just now'}</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Bottom Part - Profile Section */}
-        <div style={{ padding: '20px', backgroundColor: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          {/* Usage Meter */}
-          <div style={{ marginBottom: '20px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <label style={{ fontSize: '10px', fontWeight: '800', color: '#444', textTransform: 'uppercase' }}>Credits Remaining</label>
-              <span style={{ fontSize: '10px', fontWeight: '800', color: currentBalance <= 15 ? '#ef4444' : '#888' }}>{currentBalance} / {currentMax}</span>
-            </div>
-            <div style={{ height: '4px', backgroundColor: '#111', borderRadius: '2px', overflow: 'hidden', marginBottom: '8px' }}>
-              <div style={{ height: '100%', width: `${percentUsed}%`, backgroundColor: currentBalance <= 15 ? '#ef4444' : '#a3e635', borderRadius: '2px', transition: '0.3s' }} />
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '10px', color: '#666' }}>Resets in {resetHours}h {resetMins}m</span>
-              {!isPro && <Link to="/pricing" style={{ fontSize: '10px', color: '#a3e635', fontWeight: '700', textDecoration: 'none' }}>Go Pro →</Link>}
-            </div>
-          </div>
-
-          {/* Usage Meter removed from desktop as requested */}
-
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '12px',
-            background: '#111',
-            borderRadius: '14px',
-            border: '1px solid #1a1a1a',
-            transition: '0.3s'
-          }}>
-            <div onClick={() => profile?.username && navigate(`/u/${profile.username}`)} style={{ display: 'flex', alignItems: 'center', gap: '10px', overflow: 'hidden', cursor: profile?.username ? 'pointer' : 'default' }}>
-              <div
-                style={{
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '50%',
-                  backgroundColor: '#a3e635',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: '800',
-                  color: '#000',
-                  fontSize: '14px',
-                  flexShrink: 0,
-                  transition: '0.3s',
-                  border: '2px solid transparent'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.borderColor = '#a3e635'}
-                onMouseLeave={(e) => e.currentTarget.style.borderColor = 'transparent'}
-              >
-                {'D'}
-              </div>
-              <div style={{ overflow: 'hidden' }}>
-                <div style={{ fontSize: '13px', fontWeight: '800', color: '#fff', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  {'Demo User'}
-                  {profile?.is_pro && (
-                    <span style={{
-                      fontSize: '9px',
-                      padding: '2px 6px',
-                      backgroundColor: 'rgba(163,230,53,0.15)',
-                      color: '#a3e635',
-                      borderRadius: '4px',
-                      border: '1px solid rgba(163,230,53,0.3)',
-                      fontWeight: '900',
-                      letterSpacing: '0.5px'
-                    }}>PRO</span>
-                  )}
-                </div>
-                <div style={{ fontSize: '10px', color: '#666', fontWeight: '700' }}>
-                  {profile?.is_pro ? 'Pro Plan' : 'Basic Plan'}
-                </div>
+        {/* Bottom Profile */}
+        <div style={{ padding: '16px', borderTop: '1px solid #141414' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 10px', background: '#0d0d0d', borderRadius: 8, border: '1px solid #1a1a1a' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#a3e635', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, color: '#000', fontSize: 12 }}>D</div>
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 600, color: '#fff' }}>Demo User</div>
+                <div style={{ fontSize: 10, color: '#555' }}>Free Plan</div>
               </div>
             </div>
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <button style={{ color: '#555', padding: '4px' }} title="Settings" onClick={onSettings}>
-                <Settings size={16} />
-              </button>
-
-            </div>
+            <button onClick={onSettings} style={{ color: '#444', background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
+              <Settings size={14} />
+            </button>
           </div>
-
-          <div onClick={clearHistory} style={{ fontSize: '10px', color: '#333', textAlign: 'center', cursor: 'pointer', marginTop: '12px', fontWeight: '700', letterSpacing: '0.5px' }}>
-            CLEAR HISTORY
-          </div>
+          <div onClick={clearHistory} style={{ fontSize: 10, color: '#333', textAlign: 'center', cursor: 'pointer', marginTop: 10, fontWeight: 600, letterSpacing: '0.5px' }}>CLEAR HISTORY</div>
         </div>
       </div>
     </>
