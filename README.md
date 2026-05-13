@@ -40,7 +40,6 @@ Built for founders validating ideas, developers planning features, content strat
 - **15-tab strategic briefs** — Executive summary, problem statement, target market, competitive landscape, technical architecture, feature roadmap, go-to-market strategy, revenue model, team plan, risk analysis, financial projections, launch timeline, success metrics, investor narrative, and immediate next steps.
 - **6 AI modes** — Startup, Coding, Content, Creative, General, and Startup Lite. Each with a specialized system prompt.
 - **2 personality styles** — Bot (structured, analytical, data-driven) or Human (conversational, advisory).
-- **Live streaming** — Content appears as it generates. No waiting for full responses.
 - **Persistent history** — Every brief saved to your own database. Browse, revisit, and share.
 
 ### 🤖 AI Provider System
