@@ -197,10 +197,22 @@ export default function Setup() {
         return;
       }
 
-      if (data.needsManualSetup) {
-        setSetupProgress(prev => [...prev, { label: '⚠️ Auto-creation not available', status: 'error' }]);
+      if (data.passwordError) {
+        setSetupProgress(prev => [...prev, { label: '❌ Incorrect password', status: 'error' }]);
         setSetupError(
-          '⏳ Could not auto-create tables.\n\n' +
+          '❌ The database password you entered is incorrect.\n\n' +
+          'Check your password in Supabase Dashboard → Project Settings → Database → Password.\n\n' +
+          'Or click Skip to continue without saving briefs to the database.\n\n' +
+          'The app will still work for generating briefs.'
+        );
+        setSetupRunning(false);
+        return;
+      }
+
+      if (data.needsManualSetup) {
+        setSetupProgress(prev => [...prev, { label: '⚠️ Cannot auto-connect', status: 'error' }]);
+        setSetupError(
+          '⚠️ Could not auto-create tables.\n\n' +
           'The app still works for generating briefs — they just won\'t be saved to a database.\n\n' +
           'To enable database saving later:\n' +
           '1. Open your Supabase Dashboard → SQL Editor\n' +
@@ -221,7 +233,7 @@ export default function Setup() {
       }
 
       if (data.success) {
-        setSetupProgress(prev => [...prev, { label: '✅ Database ready!', status: 'done' }]);
+        setSetupProgress(prev => [...prev, { label: '✅ All tables created successfully!', status: 'done' }]);
       }
     } catch (err) {
       setSetupError('Could not reach backend to set up database. Make sure the backend is running.');

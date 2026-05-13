@@ -249,22 +249,22 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
         <div className="desktop-only-input" style={{ width: '100%' }}>
           <div className="input-pill-wrapper" style={{
             width: '100%',
-            backgroundColor: '#111',
+            backgroundColor: '#0d0d0d',
             borderRadius: '99px',
-            padding: '8px 8px 8px 24px',
+            padding: '6px 6px 6px 20px',
             display: 'flex',
             alignItems: 'center',
-            border: isFocused ? '1px solid rgba(163, 230, 53, 0.3)' : '1px solid #1f1f1f',
-            boxShadow: isFocused ? '0 0 20px rgba(163, 230, 53, 0.08)' : 'none',
-            transition: 'all 0.4s var(--ease-premium)'
+            border: isFocused ? '1px solid rgba(163, 230, 53, 0.25)' : '1px solid #1a1a1a',
+            boxShadow: isFocused ? '0 0 15px rgba(163, 230, 53, 0.06)' : 'none',
+            transition: 'all 0.2s'
           }}>
             <button
-              style={{ color: '#444', padding: '8px', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', transition: '0.3s' }}
+              style={{ color: '#555', padding: '6px', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', transition: '0.2s' }}
               onClick={handleAttachmentClick}
-              onMouseEnter={(e) => e.currentTarget.style.color = GREEN}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#444'}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#a3e635'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#555'}
             >
-              <Paperclip size={18} />
+              <Paperclip size={16} />
             </button>
             <input
               id="pq-image-upload-input"
@@ -299,15 +299,15 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
                 }
               }}
               disabled={loading}
-              style={{ flex: 1, minWidth: 0, background: 'none', border: 'none', color: '#fff', fontSize: '15px', outline: 'none', padding: '0 12px' }}
+              style={{ flex: 1, minWidth: 0, background: 'none', border: 'none', color: '#fff', fontSize: '14px', outline: 'none', padding: '0 10px' }}
             />
             <button
               onClick={handleMic}
-              style={{ color: '#444', padding: '8px', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', marginRight: '4px', transition: '0.3s' }}
+              style={{ color: '#555', padding: '6px', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', marginRight: '2px', transition: '0.2s' }}
               onMouseEnter={(e) => e.currentTarget.style.color = '#a3e635'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#444'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#555'}
             >
-              <Mic size={18} />
+              <Mic size={16} />
             </button>
 
             {/* Personality Selector */}
@@ -341,29 +341,23 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
               onClick={handleSubmit}
               disabled={loading || (!input.trim() && !attachment)}
               style={{
-                width: '42px',
-                height: '42px',
-                flexShrink: 0,
-                borderRadius: '50%',
-                backgroundColor: '#0a0a0a',
-                border: '1px solid #1a1a1a',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#fff',
+                width: '36px', height: '36px', flexShrink: 0, borderRadius: '50%',
+                background: loading || (!input.trim() && !attachment) ? '#1a1a1a' : '#a3e635',
+                border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center',
                 cursor: loading || (!input.trim() && !attachment) ? 'not-allowed' : 'pointer',
-                transition: '0.3s var(--ease-premium)',
-                opacity: loading || (!input.trim() && !attachment) ? 0.5 : 1
+                transition: 'all 0.2s', opacity: loading || (!input.trim() && !attachment) ? 0.4 : 1,
               }}
               onMouseEnter={(e) => {
                 if (!loading && (input.trim() || attachment)) {
-                  e.currentTarget.style.borderColor = '#a3e635';
-                  e.currentTarget.style.transform = 'scale(1.05)';
+                  e.currentTarget.style.background = '#bef264';
+                  e.currentTarget.style.transform = 'scale(1.1)';
                 }
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#1a1a1a';
-                e.currentTarget.style.transform = 'scale(1)';
+                if (!loading && (input.trim() || attachment)) {
+                  e.currentTarget.style.background = '#a3e635';
+                  e.currentTarget.style.transform = 'scale(1)';
+                }
               }}
             >
               <Plus size={20} />

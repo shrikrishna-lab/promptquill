@@ -2032,21 +2032,21 @@ Use low temperature for CODING and GENERAL precision, medium temperature for CON
           )}
 
           {(!currentSession?.id && !result && !loading && !expanderVisible) ? (
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '60px 40px', maxWidth: 900, margin: '0 auto' }}>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', width: '100%', padding: '40px 40px 20px', maxWidth: 900, margin: '0 auto', marginTop: '-2vh' }}>
 
               {/* Hero */}
-              <div style={{ textAlign: 'center', marginBottom: 40 }}>
-                <h1 style={{ fontSize: 'clamp(48px, 6vw, 80px)', fontWeight: 900, lineHeight: 1.05, letterSpacing: '-3px', fontStyle: 'italic', margin: 0 }}>
+              <div style={{ textAlign: 'center', marginBottom: 28 }}>
+                <h1 style={{ fontSize: 'clamp(42px, 5vw, 72px)', fontWeight: 900, lineHeight: 1.05, letterSpacing: '-2.5px', fontStyle: 'italic', margin: 0 }}>
                   <span style={{ color: '#a3e635' }}>Generate</span><br />
                   <span style={{ color: '#fff' }}>Your Prompt</span>
                 </h1>
-                <p style={{ color: '#666', marginTop: 20, fontSize: 13, letterSpacing: '2px', fontWeight: 700 }}>
+                <p style={{ color: '#555', marginTop: 14, fontSize: 12, letterSpacing: '2px', fontWeight: 700 }}>
                   POWERING INTELLIGENT ARCHITECTURE
                 </p>
               </div>
 
               {/* Suggestion Chips */}
-              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 28 }}>
+              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 24 }}>
                 {[
                   { icon: '💡', text: 'SaaS for students' },
                   { icon: '🚀', text: 'AI tutor app' },
