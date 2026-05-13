@@ -176,39 +176,6 @@ const TopBar = ({ score, scoreBreakdown, difficulty, difficultyHours, issuesCoun
               </div>
             </div>
 
-            {/* Credits Badge */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 20px', backgroundColor: credits?.balance > 20 ? 'rgba(163,230,53,0.05)' : 'rgba(239,68,68,0.1)', border: credits?.balance > 20 ? '1px solid rgba(163,230,53,0.2)' : '1px solid rgba(239,68,68,0.3)', borderRadius: '16px', transition: '0.3s' }}>
-              <span style={{ fontSize: '16px' }}>⚡</span>
-              <div>
-                <div style={{ fontSize: '10px', fontWeight: '800', color: '#555', textTransform: 'uppercase', marginBottom: '4px' }}>CREDITS</div>
-                <div style={{ fontSize: '16px', fontWeight: '900', color: credits?.balance > 20 ? '#a3e635' : '#ef4444' }}>{credits?.balance ?? '...'}</div>
-              </div>
-            </div>
-
-            {/* Buy Credits Button - Shows when balance is low */}
-            {credits?.balance <= 20 && (
-              <button 
-                onClick={onBuyCredits}
-                style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 16px', backgroundColor: 'rgba(163, 230, 53, 0.1)', border: '1px solid rgba(163, 230, 53, 0.3)', borderRadius: '16px', color: '#a3e635', fontSize: '12px', fontWeight: '800', cursor: 'pointer', transition: '0.3s' }}
-                onMouseEnter={e => e.target.style.backgroundColor = 'rgba(163, 230, 53, 0.2)'}
-                onMouseLeave={e => e.target.style.backgroundColor = 'rgba(163, 230, 53, 0.1)'}
-              >
-                <ShoppingCart size={14} /> Buy Credits
-              </button>
-            )}
-
-            {/* Countdown Timer - Shows if credits available and clock is ticking */}
-            {nextReset && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 20px', backgroundColor: 'rgba(163, 230, 53, 0.1)', border: '1px solid rgba(163, 230, 53, 0.3)', borderRadius: '16px', transition: '0.3s' }}>
-                <Clock size={16} color="#a3e635" />
-                <div>
-                  <div style={{ fontSize: '10px', fontWeight: '800', color: '#555', textTransform: 'uppercase', marginBottom: '4px' }}>RESET IN</div>
-                  <div style={{ fontSize: '14px', fontWeight: '800', color: '#a3e635', fontFamily: 'monospace' }}>
-                    {String(nextReset.hours).padStart(2, '0')}:{String(nextReset.minutes).padStart(2, '0')}:{String(nextReset.seconds).padStart(2, '0')}
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Action Buttons */}

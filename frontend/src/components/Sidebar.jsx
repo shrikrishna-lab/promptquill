@@ -115,23 +115,13 @@ const Sidebar = ({ profile, sessions, currentSessionId, onNewSession, onSessionS
         transition: 'transform 0.3s ease', zIndex: 100,
       }}>
         <div style={{ padding: '20px 16px', flex: 1, overflowY: 'auto' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
-            <span style={{ fontSize: 18, fontWeight: 800, letterSpacing: '-0.5px', color: '#fff' }}>PromptQuill</span>
-            <button onClick={onNewSession} style={{ width: 28, height: 28, borderRadius: 6, background: '#141414', border: '1px solid #1f1f1f', color: '#888', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Plus size={14} />
-            </button>
+          <div style={{ marginBottom: 24 }}>
+            <span style={{ fontSize: 16, fontWeight: 800, letterSpacing: '-0.3px', color: '#fff' }}>PromptQuill</span>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             <Link to="/ai" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 6, color: '#fff', textDecoration: 'none', background: 'rgba(255,255,255,0.04)', fontSize: 13, fontWeight: 600 }}>
               <Home size={16} color="#a3e635" /> Dashboard
-            </Link>
-            <div style={{ fontSize: 10, fontWeight: 700, color: '#444', textTransform: 'uppercase', letterSpacing: '1px', marginTop: 20, marginBottom: 6, paddingLeft: 10 }}>Tools</div>
-            <Link to="/graveyard" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 6, color: '#666', textDecoration: 'none', fontSize: 13, fontWeight: 500 }}>
-              <Trash2 size={15} /> Graveyard
-            </Link>
-            <Link to="/remixer" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 6, color: '#666', textDecoration: 'none', fontSize: 13, fontWeight: 500 }}>
-              <Lightbulb size={15} /> Idea Remixer
             </Link>
             <Link to="/battles" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 6, color: '#666', textDecoration: 'none', fontSize: 13, fontWeight: 500 }}>
               <Swords size={15} /> Prompt Battle
@@ -141,24 +131,7 @@ const Sidebar = ({ profile, sessions, currentSessionId, onNewSession, onSessionS
             </Link>
           </div>
 
-          <div style={{ fontSize: 10, fontWeight: 700, color: '#444', textTransform: 'uppercase', letterSpacing: '1px', marginTop: 24, marginBottom: 8, paddingLeft: 10 }}>History</div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            {sessions.slice(0, 20).map((session) => (
-              <div key={session.id} onClick={() => onSessionSelect(session.id)}
-                style={{ padding: '8px 10px', borderRadius: 6, cursor: 'pointer', background: currentSessionId === session.id ? 'rgba(163,230,53,0.04)' : 'transparent', borderLeft: currentSessionId === session.id ? '2px solid #a3e635' : '2px solid transparent', transition: '0.15s' }}
-                onMouseEnter={e => { if (currentSessionId !== session.id) e.currentTarget.style.background = 'rgba(255,255,255,0.02)'; }}
-                onMouseLeave={e => { if (currentSessionId !== session.id) e.currentTarget.style.background = 'transparent'; }}
-              >
-                <div style={{ fontSize: 12, fontWeight: currentSessionId === session.id ? 600 : 400, color: currentSessionId === session.id ? '#fff' : '#666', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 2 }}>
-                  {session.title || 'Untitled'}
-                </div>
-                <div style={{ fontSize: 10, color: '#444', display: 'flex', gap: 8 }}>
-                  <span>{session.mode || 'GENERAL'}</span>
-                  <span>{session.created_at_human || 'Just now'}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+
         </div>
 
         {/* Bottom Profile */}
@@ -175,7 +148,7 @@ const Sidebar = ({ profile, sessions, currentSessionId, onNewSession, onSessionS
               <Settings size={14} />
             </button>
           </div>
-          <div onClick={clearHistory} style={{ fontSize: 10, color: '#333', textAlign: 'center', cursor: 'pointer', marginTop: 10, fontWeight: 600, letterSpacing: '0.5px' }}>CLEAR HISTORY</div>
+
         </div>
       </div>
     </>

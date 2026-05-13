@@ -571,50 +571,7 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
           </div>
         </div>
 
-        {/* Old Mode Selector (Desktop Only) */}
-        <div className="mobile-hide animate-slide-up delay-100" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '4px', backgroundColor: '#0a0a0a', borderRadius: '24px', border: '1px solid #111', marginTop: '16px' }}>
-          {modes.map(m => (
-            <button
-              key={`desk-${m.id}`}
-              onClick={() => handleModeSelect(m.id)}
-              disabled={loading}
-              style={{
-                padding: '10px 18px',
-                borderRadius: '99px',
-                border: currentMode === m.id
-                  ? (m.id === 'CREATIVE' ? '1px solid rgba(236,72,153,0.7)' : '1px solid rgba(109,40,217,0.7)')
-                  : '1px solid transparent',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                fontSize: '12px',
-                fontWeight: '700',
-                cursor: loading ? 'not-allowed' : 'pointer',
-                background: currentMode === m.id
-                  ? (m.id === 'CREATIVE'
-                    ? 'linear-gradient(135deg, rgba(219,39,119,0.22), rgba(168,85,247,0.18))'
-                    : 'linear-gradient(135deg, rgba(109,40,217,0.22), rgba(59,130,246,0.14))')
-                  : 'transparent',
-                color: currentMode === m.id ? '#fff' : '#444',
-                transition: 'all 0.3s var(--ease-premium)',
-                opacity: (loading && currentMode !== m.id) ? 0.3 : 1,
-                boxShadow: currentMode === m.id
-                  ? (m.id === 'CREATIVE' ? '0 8px 24px rgba(219,39,119,0.24)' : '0 8px 24px rgba(109,40,217,0.24)')
-                  : 'none',
-                whiteSpace: 'nowrap'
-              }}
-            >
-              <span style={{ 
-                color: currentMode === m.id ? m.color : 'inherit', 
-                filter: currentMode === m.id ? `drop-shadow(0 0 5px ${m.color})` : 'none',
-                fontSize: '14px'
-              }}>{m.icon}</span>
-              {m.id === 'CREATIVE' && creativeSubType
-                ? `Creative — ${creativeSubTypes.find((s) => s.id === creativeSubType)?.label || 'Type'}`
-                : m.label}
-            </button>
-          ))}
-        </div>
+
       </div>
 
       {/* Creative Sub-Type Selector Modal */}
