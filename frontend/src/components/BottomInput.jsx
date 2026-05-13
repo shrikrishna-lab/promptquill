@@ -311,27 +311,23 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
             </button>
 
             {/* Personality Selector */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px', marginRight: '6px', background: '#0d0d0d', borderRadius: '99px', border: '1px solid #222', padding: '2px' }}>
-              <button
-                onClick={() => setPersonality('bot')}
-                title="Bot personality"
+            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', marginRight: '6px', background: '#111', borderRadius: '8px', border: '1px solid #1f1f1f', padding: '3px' }}>
+              <button type="button" onClick={(e) => { e.preventDefault(); setPersonality('bot'); }}
                 style={{
-                  padding: '6px 12px', borderRadius: '99px', border: 'none',
+                  padding: '5px 12px', borderRadius: '6px', border: 'none',
                   fontSize: '11px', fontWeight: 700, cursor: 'pointer',
                   background: personality === 'bot' ? '#a3e635' : 'transparent',
                   color: personality === 'bot' ? '#000' : '#666',
-                  transition: 'all 0.15s',
+                  transition: 'all 0.12s',
                 }}
               >🤖 Bot</button>
-              <button
-                onClick={() => setPersonality('human')}
-                title="Human personality"
+              <button type="button" onClick={(e) => { e.preventDefault(); setPersonality('human'); }}
                 style={{
-                  padding: '6px 12px', borderRadius: '99px', border: 'none',
+                  padding: '5px 12px', borderRadius: '6px', border: 'none',
                   fontSize: '11px', fontWeight: 700, cursor: 'pointer',
                   background: personality === 'human' ? '#a3e635' : 'transparent',
                   color: personality === 'human' ? '#000' : '#666',
-                  transition: 'all 0.15s',
+                  transition: 'all 0.12s',
                 }}
               >👤 Human</button>
             </div>

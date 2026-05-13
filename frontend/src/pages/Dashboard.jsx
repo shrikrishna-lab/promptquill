@@ -2085,14 +2085,14 @@ Use low temperature for CODING and GENERAL precision, medium temperature for CON
                   <button
                     key={m.id}
                     type="button"
-                    onClick={() => { setBottomInputMode(m.id); }}
+                    onClick={(e) => { e.preventDefault(); setBottomInputMode(m.id); }}
                     style={{
-                      padding: '8px 16px', borderRadius: '99px', border: '1px solid', fontSize: 12, fontWeight: 700,
-                      cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6,
-                      background: bottomInputMode === m.id ? 'rgba(163,230,53,0.1)' : 'transparent',
-                      borderColor: bottomInputMode === m.id ? 'rgba(163,230,53,0.3)' : '#1a1a1a',
+                      padding: '7px 14px', borderRadius: '8px', border: '1px solid', fontSize: 12, fontWeight: 600,
+                      cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5,
+                      background: bottomInputMode === m.id ? 'rgba(163,230,53,0.08)' : 'transparent',
+                      borderColor: bottomInputMode === m.id ? 'rgba(163,230,53,0.25)' : '#1a1a1a',
                       color: bottomInputMode === m.id ? '#a3e635' : '#555',
-                      transition: 'all 0.15s',
+                      transition: 'all 0.12s',
                     }}
                     onMouseEnter={e => { if (bottomInputMode !== m.id) { e.currentTarget.style.borderColor = '#333'; e.currentTarget.style.color = '#888'; }}}
                     onMouseLeave={e => { if (bottomInputMode !== m.id) { e.currentTarget.style.borderColor = '#1a1a1a'; e.currentTarget.style.color = '#555'; }}}
