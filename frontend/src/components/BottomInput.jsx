@@ -48,7 +48,7 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
     });
 
 
-  const PURPLE = '#6d28d9';
+  const GREEN = '#a3e635';
 
   useEffect(() => {
     if (externalInput) setInput(externalInput);
@@ -254,14 +254,14 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
             padding: '8px 8px 8px 24px',
             display: 'flex',
             alignItems: 'center',
-            border: isFocused ? '1px solid rgba(109, 40, 217, 0.5)' : '1px solid rgba(255, 255, 255, 0.08)',
-            boxShadow: isFocused ? '0 0 30px rgba(109, 40, 217, 0.15)' : 'none',
+            border: isFocused ? '1px solid rgba(163, 230, 53, 0.3)' : '1px solid #1f1f1f',
+            boxShadow: isFocused ? '0 0 20px rgba(163, 230, 53, 0.08)' : 'none',
             transition: 'all 0.4s var(--ease-premium)'
           }}>
             <button
               style={{ color: '#444', padding: '8px', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', transition: '0.3s' }}
               onClick={handleAttachmentClick}
-              onMouseEnter={(e) => e.currentTarget.style.color = PURPLE}
+              onMouseEnter={(e) => e.currentTarget.style.color = GREEN}
               onMouseLeave={(e) => e.currentTarget.style.color = '#444'}
             >
               <Paperclip size={18} />
@@ -357,8 +357,8 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
               }}
               onMouseEnter={(e) => {
                 if (!loading && (input.trim() || attachment)) {
-                  e.currentTarget.style.borderColor = '#6d28d9';
-                  e.currentTarget.style.transform = 'scale(1.08)';
+                  e.currentTarget.style.borderColor = '#a3e635';
+                  e.currentTarget.style.transform = 'scale(1.05)';
                 }
               }}
               onMouseLeave={(e) => {
@@ -372,136 +372,7 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
           </div>
         </div>
 
-        {/* MOBILE GLASS CARD INPUT */}
-        <div className="mobile-only-input" style={{
-          width: '100%',
-          borderRadius: '20px',
-          padding: '16px',
-          display: 'none', // Overridden in CSS to flex for mobile
-          flexDirection: 'column',
-          gap: '12px',
-          background: 'linear-gradient(#050505, #050505) padding-box, linear-gradient(135deg, #a3e635, #8b5cf6) border-box',
-          border: '1.5px solid transparent',
-          boxShadow: '0 0 20px rgba(163, 230, 53, 0.05), 0 0 20px rgba(139, 92, 246, 0.05)',
-          transition: 'all 0.4s var(--ease-premium)',
-          position: 'relative'
-        }}>
-          {attachment && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '4px 8px', borderRadius: '12px', border: '1px solid #2a2a2a', background: '#0b0b0b', width: 'max-content', marginBottom: '8px' }}>
-              <img src={attachment.preview} alt="Attachment preview" style={{ width: '32px', height: '32px', borderRadius: '6px', objectFit: 'cover' }} />
-              <button
-                onClick={() => setAttachment(null)}
-                style={{ background: 'none', border: 'none', color: '#888', cursor: 'pointer', fontWeight: 800 }}
-              >
-                ✕
-              </button>
-            </div>
-          )}
-
-          <div style={{ position: 'relative', width: '100%' }}>
-            <textarea
-              placeholder="Describe your idea..."
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
-              disabled={loading}
-              style={{
-                width: '100%',
-                background: 'none',
-                border: 'none',
-                color: '#fff',
-                fontSize: '15px',
-                outline: 'none',
-                minHeight: '60px',
-                resize: 'none',
-                paddingRight: '24px'
-              }}
-            />
-            <button style={{ position: 'absolute', right: 0, top: 0, background: 'none', border: 'none', color: '#555', padding: 0 }}>
-              <Maximize2 size={16} />
-            </button>
-          </div>
-
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-              {/* Attachment & Mic inside dark circles */}
-              <button
-                onClick={handleAttachmentClick}
-                style={{ color: '#aaa', width: '36px', height: '36px', background: 'rgba(255,255,255,0.06)', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.05)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-              >
-                <Paperclip size={16} />
-              </button>
-              <button
-                onClick={handleMic}
-                style={{ color: '#aaa', width: '36px', height: '36px', background: 'rgba(255,255,255,0.06)', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.05)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-              >
-                <Mic size={16} />
-              </button>
-
-              {/* Joined Pill for Bot / Human */}
-              <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(255,255,255,0.04)', borderRadius: '99px', padding: '3px', marginLeft: '4px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                <button
-                  onClick={() => setPersonality('bot')}
-                  disabled={loading}
-                  style={{
-                    padding: '6px 14px',
-                    borderRadius: '99px',
-                    border: 'none',
-                    display: 'flex', alignItems: 'center', gap: '6px',
-                    fontSize: '12px', fontWeight: '700',
-                    backgroundColor: personality === 'bot' ? '#a3e635' : 'transparent',
-                    color: personality === 'bot' ? '#000' : '#888',
-                    transition: 'all 0.2s'
-                  }}
-                >
-                  🤖 Bot
-                </button>
-                <button
-                  onClick={() => setPersonality('human')}
-                  disabled={loading}
-                  style={{
-                    padding: '6px 14px',
-                    borderRadius: '99px',
-                    border: 'none',
-                    display: 'flex', alignItems: 'center', gap: '6px',
-                    fontSize: '12px', fontWeight: '700',
-                    backgroundColor: personality === 'human' ? '#a3e635' : 'transparent',
-                    color: personality === 'human' ? '#000' : '#888',
-                    transition: 'all 0.2s'
-                  }}
-                >
-                  👤 Human
-                </button>
-              </div>
-            </div>
-
-            <button
-              onClick={handleSubmit}
-              disabled={loading || (!input.trim() && !attachment)}
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '50%',
-                backgroundColor: (loading || (!input.trim() && !attachment)) ? 'rgba(255,255,255,0.1)' : '#a3e635',
-                border: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: (loading || (!input.trim() && !attachment)) ? '#555' : '#000',
-                cursor: loading || (!input.trim() && !attachment) ? 'not-allowed' : 'pointer',
-                boxShadow: (loading || (!input.trim() && !attachment)) ? 'none' : '0 0 15px rgba(163, 230, 53, 0.4)',
-                transition: 'all 0.3s'
-              }}
-            >
-              <Sparkles size={20} strokeWidth={2.5} />
-            </button>
-          </div>
-        </div>
-
       </div>
-        </div>
-  );
       {/* Creative Sub-Type Selector Modal */}
       {showSubTypeModal && currentMode === 'CREATIVE' && (
         <div className="creative-modal-overlay" style={{
@@ -643,6 +514,8 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
           </div>
         </div>
       )}
+    </div>
+  );
 };
 
 export default BottomInput;
