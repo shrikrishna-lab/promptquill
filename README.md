@@ -130,6 +130,9 @@ Start the app with `npm run dev`, open **http://localhost:3001**, and click **Ge
 
 ---
 
+<img width="1246" height="561" alt="image" src="https://github.com/user-attachments/assets/fdb6bd23-4083-4765-849e-7b86b778276b" />
+
+
 ## ✦ 16 AI Providers
 
 <table>
