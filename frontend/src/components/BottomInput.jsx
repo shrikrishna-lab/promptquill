@@ -311,53 +311,29 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
             </button>
 
             {/* Personality Selector */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginRight: '8px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '2px', marginRight: '6px', background: '#0d0d0d', borderRadius: '99px', border: '1px solid #222', padding: '2px' }}>
               <button
                 onClick={() => setPersonality('bot')}
-                disabled={loading}
-                title="Bot personality - Technical, VC memo style"
+                title="Bot personality"
                 style={{
-                  padding: '8px 14px',
-                  borderRadius: '99px',
-                  border: personality === 'bot' ? '1.5px solid #a3e635' : '1px solid #222',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  fontSize: '11px',
-                  fontWeight: '700',
-                  cursor: loading ? 'not-allowed' : 'pointer',
-                  backgroundColor: personality === 'bot' ? 'rgba(163, 230, 53, 0.15)' : 'transparent',
-                  color: personality === 'bot' ? '#a3e635' : '#666',
-                  transition: 'all 0.3s var(--ease-premium)',
-                  opacity: loading ? 0.5 : 1
+                  padding: '6px 12px', borderRadius: '99px', border: 'none',
+                  fontSize: '11px', fontWeight: 700, cursor: 'pointer',
+                  background: personality === 'bot' ? '#a3e635' : 'transparent',
+                  color: personality === 'bot' ? '#000' : '#666',
+                  transition: 'all 0.15s',
                 }}
-              >
-                <span style={{ fontSize: '12px' }}>🤖</span>
-                <span className="mobile-hide">Bot</span>
-              </button>
+              >🤖 Bot</button>
               <button
                 onClick={() => setPersonality('human')}
-                disabled={loading}
-                title="Human personality - Founder letter style"
+                title="Human personality"
                 style={{
-                  padding: '8px 14px',
-                  borderRadius: '99px',
-                  border: personality === 'human' ? '1.5px solid #a3e635' : '1px solid #222',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  fontSize: '11px',
-                  fontWeight: '700',
-                  cursor: loading ? 'not-allowed' : 'pointer',
-                  backgroundColor: personality === 'human' ? 'rgba(163, 230, 53, 0.15)' : 'transparent',
-                  color: personality === 'human' ? '#a3e635' : '#666',
-                  transition: 'all 0.3s var(--ease-premium)',
-                  opacity: loading ? 0.5 : 1
+                  padding: '6px 12px', borderRadius: '99px', border: 'none',
+                  fontSize: '11px', fontWeight: 700, cursor: 'pointer',
+                  background: personality === 'human' ? '#a3e635' : 'transparent',
+                  color: personality === 'human' ? '#000' : '#666',
+                  transition: 'all 0.15s',
                 }}
-              >
-                <span style={{ fontSize: '12px' }}>👤</span>
-                <span className="mobile-hide">Human</span>
-              </button>
+              >👤 Human</button>
             </div>
 
             {/* Submit Button */}
