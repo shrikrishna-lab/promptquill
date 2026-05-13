@@ -13,6 +13,11 @@ build/
 .DS_Store
 *.log
 backend/config/
+.vercel/
+vercel.json
+railway.json
+.railwayignore
+*.railway*
 .git-rewrite/
 *.txt
 !LICENSE
