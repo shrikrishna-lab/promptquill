@@ -12,7 +12,7 @@
 ## Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/promptquill
+git clone https://github.com/shrikrishna-lab/promptquill
 cd promptquill
 ```
 

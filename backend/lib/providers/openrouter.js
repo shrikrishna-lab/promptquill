@@ -4,7 +4,7 @@ export async function callOpenRouter(apiKey, messages, params, extra = {}, onChu
     headers: {
       'Authorization': `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
-      'HTTP-Referer': 'https://github.com/yourusername/promptquill',
+      'HTTP-Referer': 'https://github.com/shrikrishna-lab/promptquill',
     },
     body: JSON.stringify({
       model: params.model || 'meta-llama/llama-3.3-70b-instruct:free',

@@ -176,7 +176,7 @@ const AboutUs = () => {
                 Follow on Twitter/X
               </a>
               <a 
-                href="https://github.com/yourusername" 
+                href="https://github.com/shrikrishna-lab" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 style={{ 

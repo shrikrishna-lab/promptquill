@@ -250,7 +250,7 @@ const TermsOfService = () => {
           <section style={s.card}>
             <h2 style={s.h2}>11. Contact</h2>
             <p style={s.p}>
-              For questions about these Terms of Service, please contact the administrator of this instance. If you are the instance administrator, refer to the project repository at <a href="https://github.com/yourusername/promptquill" style={s.link}>github.com/yourusername/promptquill</a> for support.
+              For questions about these Terms of Service, please contact the administrator of this instance. If you are the instance administrator, refer to the project repository at <a href="https://github.com/shrikrishna-lab/promptquill" style={s.link}>github.com/shrikrishna-lab/promptquill</a> for support.
             </p>
           </section>
         </div>

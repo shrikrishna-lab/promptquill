@@ -375,10 +375,22 @@ const SettingsPage = () => {
               </div>
 
               <div style={{ background: 'rgba(255,255,255,0.02)', padding: 14, borderRadius: 8, border: '1px solid rgba(255,255,255,0.04)' }}>
-                <div style={{ color: '#666', fontSize: 12, marginBottom: 4, fontWeight: 600 }}>Setup Status</div>
-                <div style={{ fontSize: 13, color: localStorage.getItem('pq_setup_complete') ? '#a3e635' : '#888' }}>
+                <div style={{ color: '#666', fontSize: 12, marginBottom: 6, fontWeight: 600 }}>Setup Status</div>
+                <div style={{ fontSize: 13, color: localStorage.getItem('pq_setup_complete') ? '#a3e635' : '#f59e0b', marginBottom: 10 }}>
                   {localStorage.getItem('pq_setup_complete') ? '✅ Setup completed' : '⚠️ Setup not completed'}
                 </div>
+                {!localStorage.getItem('pq_setup_complete') && (
+                  <button onClick={() => navigate('/setup')} style={{
+                    padding: '8px 20px', borderRadius: 8, border: 'none',
+                    background: '#a3e635', color: '#000', fontWeight: 600, cursor: 'pointer', fontSize: 13,
+                    transition: 'all 0.2s',
+                  }}
+                    onMouseEnter={e => { e.target.style.background = '#bef264'; }}
+                    onMouseLeave={e => { e.target.style.background = '#a3e635'; }}
+                  >
+                    Open Setup Wizard →
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -440,8 +452,8 @@ const SettingsPage = () => {
 
               <div style={{ marginBottom: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div style={{ color: '#666', fontSize: 12, fontWeight: 600 }}>Repository</div>
-                <a href="https://github.com/yourusername/promptquill" target="_blank" rel="noopener noreferrer" style={{ color: '#a3e635', fontSize: 14, textDecoration: 'none', opacity: 0.8, transition: '0.2s' }} onMouseEnter={e => e.target.style.opacity = '1'} onMouseLeave={e => e.target.style.opacity = '0.8'}>
-                  github.com/yourusername/promptquill ↗
+                <a href="https://github.com/shrikrishna-lab/promptquill" target="_blank" rel="noopener noreferrer" style={{ color: '#a3e635', fontSize: 14, textDecoration: 'none', opacity: 0.8, transition: '0.2s' }} onMouseEnter={e => e.target.style.opacity = '1'} onMouseLeave={e => e.target.style.opacity = '0.8'}>
+                  github.com/shrikrishna-lab/promptquill ↗
                 </a>
               </div>
 

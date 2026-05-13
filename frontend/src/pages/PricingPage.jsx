@@ -58,7 +58,7 @@ const PricingPage = () => {
             </div>
             <p style={{ fontSize: '14px', color: '#555', marginBottom: '32px' }}>Open source. MIT license.</p>
             <a
-              href="https://github.com/yourusername/promptquill"
+              href="https://github.com/shrikrishna-lab/promptquill"
               target="_blank"
               rel="noopener noreferrer"
               style={{

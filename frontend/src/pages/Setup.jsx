@@ -198,15 +198,14 @@ export default function Setup() {
       if (data.needsManualSetup) {
         setSetupProgress(prev => [...prev, { label: '⚠️ Auto-creation not available', status: 'error' }]);
         setSetupError(
-          'Your Supabase project does not have the exec_sql function enabled.\n\n' +
-          'To create tables manually:\n' +
-          '1. Open your Supabase Dashboard\n' +
-          '2. Go to SQL Editor\n' +
-          '3. Paste the SQL below and click "Run"\n\n' +
+          '⏳ Could not auto-create tables.\n\n' +
+          'The app still works for generating briefs — they just won\'t be saved to a database.\n\n' +
+          'To enable database saving later:\n' +
+          '1. Open your Supabase Dashboard → SQL Editor\n' +
+          '2. Paste the SQL below and click "Run"\n\n' +
           '--- Copy from here ---\n' +
           (data.schema || '').trim() + '\n' +
-          '--- End of SQL ---\n\n' +
-          'After running, click Next to continue.'
+          '--- End of SQL ---\n'
         );
         setSetupRunning(false);
         return;
@@ -565,15 +564,14 @@ export default function Setup() {
 
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 16, gap: 10 }}>
           <button style={btnSecondary} onClick={() => goTo(2, 'back')}>Back</button>
-          {!setupRunning && setupProgress.length < setupSteps.length && (
-            <button style={btnPrimary} onClick={runSetup}>
-              Run Setup →
-            </button>
+          {!setupRunning && setupProgress.length < setupSteps.length && !setupError && (
+            <button style={btnPrimary} onClick={runSetup}>Run Setup →</button>
+          )}
+          {!setupRunning && setupError && (
+            <button style={btnPrimary} onClick={() => goTo(4, 'forward')}>Skip →</button>
           )}
           {setupProgress.length === setupSteps.length && !setupRunning && (
-            <button style={btnPrimary} onClick={() => goTo(4, 'forward')}>
-              Next →
-            </button>
+            <button style={btnPrimary} onClick={() => goTo(4, 'forward')}>Next →</button>
           )}
           {setupRunning && (
             <button style={btnDisabled} disabled>Running...</button>

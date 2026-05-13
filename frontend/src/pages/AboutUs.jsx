@@ -122,11 +122,11 @@ const AboutUs = () => {
 
   return (
     <div style={styles.page}>
-      <SEO 
-        title="About PromptQuill" 
-        description="Learn why we built the fastest growing AI prompt writer and idea validator in the developer community."
-        url="/about"
-      />
+        <SEO 
+          title="About PromptQuill" 
+          description="Open-source AI brief generator. Turn any idea into a complete 15-tab strategic brief."
+          url="/about"
+        />
       <div style={styles.container}>
         <button 
           onClick={() => navigate(-1)}
@@ -138,32 +138,23 @@ const AboutUs = () => {
         </button>
 
         <h1 style={styles.heading1}>About PromptQuill</h1>
-        <p style={styles.subtitle}>Empowering creators and builders with AI-driven prompt engineering</p>
+        <p style={styles.subtitle}>Open-source AI brief generator · Self-hosted · Free forever</p>
 
         <div>
           <section style={styles.section}>
-            <h2 style={styles.h2}>Our Mission</h2>
+            <h2 style={styles.h2}>What is PromptQuill?</h2>
             <p style={styles.paragraph}>
-              PromptQuill is dedicated to democratizing AI prompt engineering and empowering creators, developers, and businesses to unlock the full potential of artificial intelligence. We believe that prompt engineering should not be a gatekeeping skill reserved for AI experts.
+              PromptQuill is an open-source AI brief generator. Type any idea and get a complete 15-tab strategic brief in seconds. It runs entirely on your own infrastructure — your Supabase database, your AI provider keys, your machine. No subscriptions. No telemetry. No vendor lock-in.
             </p>
             <p style={styles.paragraph}>
-              Our mission is to provide a simple, intuitive, and powerful platform that enables anyone—regardless of technical expertise—to craft strategic AI prompts that generate world-class outputs. By combining intelligent routing with intuitive design, we're transforming how people interact with AI.
-            </p>
-            <p style={styles.paragraph}>
-              We recognize that the quality of AI outputs is directly proportional to the quality of prompts. PromptQuill acts as your personal prompt engineering assistant, transforming vague ideas into precise, actionable prompts that deliver exceptional results across all major AI platforms.
-            </p>
-            <p style={styles.paragraph}>
-              At our core, we're building a future where AI is accessible, affordable, and intuitive for everyone. Whether you're a startup founder, content creator, software developer, or business professional, PromptQuill is your gateway to AI excellence.
+              Designed for founders validating ideas, developers planning features, content strategists building campaigns, and anyone who needs to move from a rough concept to a structured plan quickly.
             </p>
           </section>
 
           <section style={styles.section}>
-            <h2 style={styles.h2}>What We Do</h2>
-            <p style={styles.paragraph}>
-              PromptQuill is an AI-powered prompt generation platform that helps you:
-            </p>
+            <h2 style={styles.h2}>What It Does</h2>
             <ul style={{ marginLeft: '20px', marginBottom: 0, listStyle: 'none', padding: 0 }}>
-              {['Generate comprehensive strategic briefs in 30 seconds','Switch between multiple AI models and personalities','Validate prompts with Reddit-powered feedback','Export prompts as PDFs and share with teams','Access 15+ AI providers through intelligent routing','Create professional content faster than ever before'].map((item, i) => (
+              {['Generates 15-tab strategic briefs from any idea','Supports 6 AI modes: Startup, Coding, Content, Creative, General, Startup Lite','Offers 2 personality styles: Bot (analytical) and Human (conversational)','Rotates across 16 AI providers with automatic failover','Streams content live as it generates','Saves everything to your own database'].map((item, i) => (
                 <li key={i} style={{ ...styles.listItem, paddingLeft: '24px', position: 'relative', marginBottom: '10px' }}>
                   <span style={{ position: 'absolute', left: 0, color: '#a3e635' }}>✦</span>
                   {item}
@@ -173,40 +164,15 @@ const AboutUs = () => {
           </section>
 
           <section style={styles.section}>
-            <h2 style={styles.h2}>Why PromptQuill?</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-              {[
-                { label: 'Precision', desc: 'Our system produces high-quality briefs tailored to your needs' },
-                { label: 'Speed', desc: 'Generate complete briefs in mere seconds' },
-                { label: 'Flexibility', desc: 'Switch personalities and modes to find your perfect style' },
-                { label: 'Intelligence', desc: 'Intelligent routing ensures optimal AI provider selection' },
-                { label: 'Community', desc: 'Join thousands of creators using PromptQuill daily', span: true },
-              ].map((item, i) => (
-                <div key={i} style={{
-                  ...styles.card,
-                  gridColumn: item.span ? '1 / -1' : 'auto',
-                  borderLeft: '3px solid #a3e635',
-                }}>
-                  <div style={{ fontSize: '15px', fontWeight: '700', color: '#a3e635', marginBottom: '4px' }}>{item.label}</div>
-                  <div style={{ fontSize: '14px', color: '#888', lineHeight: 1.6 }}>{item.desc}</div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section style={styles.sectionNoCard}>
             <h2 style={styles.h2}>Key Features</h2>
-            <p style={{ ...styles.paragraph, color: '#666', fontSize: '14px', marginBottom: '20px' }}>
-              Powerful tools designed to enhance your AI prompt engineering experience:
-            </p>
             <div style={styles.cardGrid}>
               {[
-                { emoji: '🚀', title: 'Pro Tabs', desc: 'Organize and manage multiple prompt projects simultaneously with unlimited tabs' },
-                { emoji: '📊', title: 'Analytics', desc: 'Track usage patterns, response times, and optimize your prompt strategies with detailed insights' },
-                { emoji: '🎯', title: 'Two Personalities', desc: 'BOT (technical, structured) and HUMAN (conversational, creative) modes for different use cases' },
-                { emoji: '🌐', title: 'Multi-Model Support', desc: 'Access 15+ AI providers including GPT, Claude, Gemini, and more through one unified interface' },
-                { emoji: '💾', title: 'Export & Share', desc: 'Export prompts as PDFs and share with your team for collaborative prompt engineering' },
-                { emoji: '✨', title: 'Smart Generation', desc: 'Generate comprehensive strategic briefs in 30 seconds using AI-powered automation' },
+                { emoji: '📋', title: '15-Tab Briefs', desc: 'Executive summary to immediate next steps — every angle covered' },
+                { emoji: '🎯', title: '6 AI Modes', desc: 'Specialized prompts for startup, coding, content, creative, general, and quick validation' },
+                { emoji: '🤖', title: '2 Personalities', desc: 'Bot for structured analysis. Human for conversational advice.' },
+                { emoji: '🔄', title: '16 Providers', desc: 'Auto-rotation across OpenAI, Claude, Groq, Gemini, xAI, Mistral, DeepSeek, and more' },
+                { emoji: '🔒', title: '100% Private', desc: 'Your data, your keys, your infrastructure. Zero telemetry.' },
+                { emoji: '💰', title: 'Free Forever', desc: 'MIT licensed. Self-hosted. No paid plans or subscriptions.' },
               ].map((feat, i) => (
                 <div key={i} style={styles.card}>
                   <div style={{ fontSize: '28px', marginBottom: '10px' }}>{feat.emoji}</div>
@@ -218,15 +184,14 @@ const AboutUs = () => {
           </section>
 
           <section style={styles.section}>
-            <h2 style={styles.h2}>Our Tech Stack</h2>
-            <p style={{ ...styles.paragraph, color: '#666' }}>Built with modern, scalable technologies:</p>
+            <h2 style={styles.h2}>Tech Stack</h2>
             <div style={styles.infoBox}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                 {[
-                  { label: 'Frontend', value: 'React 19 • React Router • Tailwind CSS' },
-                  { label: 'Backend', value: 'Node.js • Express.js • REST APIs' },
-                  { label: 'Database & Auth', value: 'Supabase • PostgreSQL • JWT Auth' },
-                  { label: 'AI & Services', value: '15+ AI APIs • Your Infrastructure' },
+                  { label: 'Frontend', value: 'React 18 · Vite' },
+                  { label: 'Backend', value: 'Node.js · Express' },
+                  { label: 'Database', value: 'Supabase (PostgreSQL)' },
+                  { label: 'AI Providers', value: '16 providers with auto-failover' },
                 ].map((item, i) => (
                   <div key={i}>
                     <p style={{ margin: '0 0 6px 0', color: '#a3e635', fontWeight: '600', fontSize: '14px' }}>{item.label}</p>
@@ -235,32 +200,16 @@ const AboutUs = () => {
                 ))}
               </div>
             </div>
-            <p style={{ marginTop: '16px', fontSize: '13px', color: '#666', lineHeight: 1.7 }}>
-              Our infrastructure is designed for scalability, security, and reliability. We're committed to maintaining the highest standards of service for all our users.
-            </p>
           </section>
 
           <section style={styles.section}>
-            <h2 style={styles.h2}>Join Our Community</h2>
+            <h2 style={styles.h2}>Open Source</h2>
             <p style={styles.paragraph}>
-              Join our growing community of 1000+ creators, entrepreneurs, and AI enthusiasts. Share your prompts, learn from others, collaborate on innovative projects, and stay updated with the latest AI developments.
-            </p>
-            <p style={{ ...styles.paragraph, color: '#666', fontSize: '14px' }}>
-              We host regular challenges, webinars, and workshops to help you master AI prompt engineering. Connect with like-minded individuals and grow together.
+              PromptQuill is MIT licensed. Free to use, modify, and distribute. The entire source code is available on GitHub.
             </p>
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '20px' }}>
               <a 
-                href="https://twitter.com/yourhandle" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                style={styles.linkBtn}
-                onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#1a1a1a'; e.currentTarget.style.borderColor = '#a3e635'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#0d0d0d'; e.currentTarget.style.borderColor = '#1a1a1a'; e.currentTarget.style.transform = 'translateY(0)'; }}
-              >
-                ✕ Follow on Twitter/X
-              </a>
-              <a 
-                href="https://github.com/yourusername" 
+                href="https://github.com/shrikrishna-lab/promptquill" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 style={styles.linkBtn}
@@ -270,38 +219,30 @@ const AboutUs = () => {
                 ★ Star on GitHub
               </a>
               <a 
-                href="mailto:support@yourdomain.com"
+                href="https://github.com/shrikrishna-lab/promptquill/issues" 
+                target="_blank" 
+                rel="noopener noreferrer"
                 style={styles.linkBtn}
                 onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#1a1a1a'; e.currentTarget.style.borderColor = '#a3e635'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
                 onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#0d0d0d'; e.currentTarget.style.borderColor = '#1a1a1a'; e.currentTarget.style.transform = 'translateY(0)'; }}
               >
-                ✉ Contact Community Team
+                🐛 Report an Issue
               </a>
             </div>
           </section>
 
           <section style={styles.section}>
-            <h2 style={styles.h2}>Contact & Support</h2>
-            <p style={styles.paragraph}>
-              Have questions, feedback, or suggestions? We'd love to hear from you. Our support team is available 24/7 to assist you with any inquiries.
-            </p>
+            <h2 style={styles.h2}>License</h2>
             <div style={styles.infoBox}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
-                <div>
-                  <div style={{ color: '#a3e635', fontWeight: '600', fontSize: '13px', marginBottom: '4px' }}>Email</div>
-                  <div style={{ color: '#888', fontSize: '13px' }}>support@yourdomain.com</div>
-                </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                 <div>
                   <div style={{ color: '#a3e635', fontWeight: '600', fontSize: '13px', marginBottom: '4px' }}>License</div>
-                  <div style={{ color: '#888', fontSize: '13px' }}>MIT Open Source</div>
+                  <div style={{ color: '#888', fontSize: '13px' }}>MIT — free forever</div>
                 </div>
                 <div>
-                  <div style={{ color: '#a3e635', fontWeight: '600', fontSize: '13px', marginBottom: '4px' }}>Location</div>
-                  <div style={{ color: '#888', fontSize: '13px' }}>Pune, India</div>
+                  <div style={{ color: '#a3e635', fontWeight: '600', fontSize: '13px', marginBottom: '4px' }}>Repository</div>
+                  <div style={{ color: '#888', fontSize: '13px' }}>github.com/shrikrishna-lab/promptquill</div>
                 </div>
-              </div>
-              <div style={{ marginTop: '12px', fontSize: '13px', color: '#555', borderTop: '1px solid #1a1a1a', paddingTop: '12px' }}>
-                Response time: Usually within 24 hours
               </div>
             </div>
           </section>

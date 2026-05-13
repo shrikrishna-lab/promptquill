@@ -4,7 +4,7 @@ First off, thank you for considering contributing to PromptQuill. It's people li
 
 ## How to Report Issues
 
-1. Search the [issue tracker](https://github.com/yourusername/promptquill/issues) to avoid duplicates
+1. Search the [issue tracker](https://github.com/shrikrishna-lab/promptquill/issues) to avoid duplicates
 2. If your issue is new, open a new issue
 3. Include:
    - A clear, descriptive title
@@ -74,4 +74,4 @@ docs: update API endpoint references
 
 ## Questions?
 
-Open a [Discussion](https://github.com/yourusername/promptquill/discussions) or ping the maintainers.
+Open a [Discussion](https://github.com/shrikrishna-lab/promptquill/discussions) or ping the maintainers.

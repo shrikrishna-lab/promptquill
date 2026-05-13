@@ -25,7 +25,7 @@ export default function Footer() {
               <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition-colors">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition-colors">
+              <a href="https://github.com/shrikrishna-lab" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition-colors">
                 <Github className="w-5 h-5" />
               </a>
               <a href="https://linkedin.com/company/yourcompany" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition-colors">
