@@ -19,8 +19,6 @@ import { timeAgo } from '../lib/utils';
 import { logUsage } from '../lib/pro';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import MobileDashboardSplash from '../components/MobileDashboardSplash';
-import MobileDashboardResult from '../components/MobileDashboardResult';
 
 // ─── Static Particle Generation ─────────────────────────
 // Pre-generated so they don't reset when component re-renders (e.g. countdown timer ticks)

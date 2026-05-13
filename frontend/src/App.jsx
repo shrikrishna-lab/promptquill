@@ -18,7 +18,7 @@ function ScrollToTop() {
 import { GlobalErrorBoundary } from './components/ErrorBoundary';
 import { PromptMemory, ResponseCache } from './lib/ai.js';
 import AnnouncementsBanner from './components/AnnouncementsBanner';
-import ThemeToggle from './components/ThemeToggle';
+
 
 // Lazy load pages for better performance and to isolate chart-related errors
 const Welcome = lazy(() => import('./pages/Welcome'));
@@ -100,7 +100,6 @@ function App() {
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Suspense>
-        <ThemeToggle />
       </Router>
     </GlobalErrorBoundary>
   );
