@@ -67,6 +67,8 @@ export default function Setup() {
   const [supabaseAnonKey, setSupabaseAnonKey] = useState('');
   const [supabaseServiceKey, setSupabaseServiceKey] = useState('');
   const [supabaseDbPassword, setSupabaseDbPassword] = useState('');
+  const [dbTestResult, setDbTestResult] = useState(null);
+  const [dbTesting, setDbTesting] = useState(false);
   const [testResult, setTestResult] = useState(null);
   const [testError, setTestError] = useState(null);
   const [testing, setTesting] = useState(false);
@@ -425,10 +427,27 @@ export default function Setup() {
           <div style={{ display: 'flex', gap: 8 }}>
             <input style={inputStyle} type="password" placeholder="Enter your Supabase database password"
               value={supabaseDbPassword}
-              onChange={e => { setSupabaseDbPassword(e.target.value); }}
+              onChange={e => { setSupabaseDbPassword(e.target.value); setDbTestResult(null); }}
               onFocus={e => e.target.style.borderColor = '#a3e635'}
               onBlur={e => e.target.style.borderColor = '#333'}
             />
+            <button onClick={async () => {
+              setDbTesting(true); setDbTestResult(null);
+              try {
+                const r = await fetch(`${BACKEND_URL}/api/setup/test-db`, {
+                  method: 'POST', headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ url: supabaseUrl, dbPassword: supabaseDbPassword })
+                });
+                const d = await r.json();
+                setDbTestResult(d.valid ? 'valid' : 'invalid');
+              } catch { setDbTestResult('error'); }
+              setDbTesting(false);
+            }} style={{
+              padding: '8px 16px', borderRadius: 6, border: '1px solid #333',
+              background: '#111', color: '#fff', cursor: 'pointer', fontSize: 12, whiteSpace: 'nowrap',
+            }}>{dbTesting ? 'Testing...' : 'Test'}</button>
+            {dbTestResult === 'valid' && <span style={{ fontSize: 20 }}>✅</span>}
+            {dbTestResult === 'invalid' && <span style={{ fontSize: 20 }}>❌</span>}
           </div>
           <div style={{ color: '#888', fontSize: 12, marginTop: 4 }}>
             Found in Supabase Dashboard → Project Settings → Database → Password
@@ -571,7 +590,7 @@ export default function Setup() {
           {!setupRunning && setupError && (
             <button style={btnPrimary} onClick={() => goTo(4, 'forward')}>Skip →</button>
           )}
-          {setupProgress.length === setupSteps.length && !setupRunning && (
+          {setupProgress.length >= setupSteps.length && !setupRunning && !setupError && (
             <button style={btnPrimary} onClick={() => goTo(4, 'forward')}>Next →</button>
           )}
           {setupRunning && (

@@ -130,4 +130,27 @@ router.post('/database', async (req, res) => {
   }
 });
 
+router.post('/test-db', async (req, res) => {
+  try {
+    const { url, dbPassword } = req.body;
+    const projectRef = getProjectRef(url);
+    if (!projectRef || !dbPassword) {
+      return res.json({ valid: false, error: 'Project URL and database password required' });
+    }
+    const ports = [6543, 5432];
+    for (const port of ports) {
+      try {
+        const connStr = `postgresql://postgres:${encodeURIComponent(dbPassword)}@db.${projectRef}.supabase.co:${port}/postgres`;
+        const pool = new pg.Pool({ connectionString: connStr, max: 1, connectionTimeoutMillis: 5000 });
+        await pool.query('SELECT 1');
+        await pool.end();
+        return res.json({ valid: true, port });
+      } catch {}
+    }
+    res.json({ valid: false, error: 'Could not connect. Check your password and that your project is not paused.' });
+  } catch (err) {
+    res.json({ valid: false, error: err.message });
+  }
+});
+
 export default router;
