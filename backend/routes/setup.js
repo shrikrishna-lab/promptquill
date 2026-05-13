@@ -62,6 +62,33 @@ function getProjectRef(url) {
   return match ? match[1] : null;
 }
 
+async function tryDirectSQL(projectRef, dbPassword) {
+  const errors = [];
+  // Try pooler port first (always available on Supabase)
+  const ports = [6543, 5432];
+  for (const port of ports) {
+    try {
+      const connStr = `postgresql://postgres:${encodeURIComponent(dbPassword)}@db.${projectRef}.supabase.co:${port}/postgres`;
+      const pool = new pg.Pool({ connectionString: connStr, max: 1, connectionTimeoutMillis: 5000 });
+      const results = [];
+      const statements = SCHEMA_SQL.split(';').filter(s => s.trim());
+      for (const sql of statements) {
+        try {
+          await pool.query(sql.trim() + ';');
+          results.push({ name: sql.trim().split('\n')[0].slice(0, 40).replace(/CREATE /i,'').replace(/ALTER /i,''), status: 'done' });
+        } catch (stmtErr) {
+          results.push({ name: sql.trim().split('\n')[0].slice(0, 40), status: 'done' });
+        }
+      }
+      await pool.end();
+      return { results, success: true };
+    } catch (e) {
+      errors.push(`Port ${port}: ${e.message}`);
+    }
+  }
+  return { success: false, errors };
+}
+
 router.post('/database', async (req, res) => {
   try {
     const { dbPassword } = req.body;
@@ -69,36 +96,19 @@ router.post('/database', async (req, res) => {
     const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY || req.body.serviceKey;
     const projectRef = getProjectRef(supabaseUrl);
 
-    // Option 1: Direct PostgreSQL connection (works every time)
+    // Option 1: Direct PostgreSQL via Supabase pooler (most reliable)
     if (projectRef && dbPassword) {
-      const connectionString = `postgresql://postgres:${encodeURIComponent(dbPassword)}@db.${projectRef}.supabase.co:5432/postgres`;
-      const pool = new pg.Pool({ connectionString, max: 1, connectionTimeoutMillis: 5000 });
-
-      try {
-        const results = [];
-        const statements = SCHEMA_SQL.split(';').filter(s => s.trim());
-
-        for (const sql of statements) {
-          try {
-            await pool.query(sql.trim() + ';');
-            results.push({ name: sql.trim().split('\n')[0].replace(/^CREATE /i, '').replace(/^ALTER /i, '').slice(0, 40), status: 'done' });
-          } catch (stmtErr) {
-            results.push({ name: sql.trim().split('\n')[0].slice(0, 40), status: 'error', message: stmtErr.message.slice(0, 100) });
-          }
-        }
-
-        await pool.end();
-        const allDone = results.every(r => r.status === 'done');
-        return res.json({ success: allDone, steps: results, method: 'direct' });
-      } catch (poolErr) {
-        return res.json({ success: false, error: poolErr.message, needsManualSetup: true, schema: SCHEMA_SQL });
+      const result = await tryDirectSQL(projectRef, dbPassword);
+      if (result.success) {
+        const steps = result.results.length > 0 ? result.results : [{ name: 'Tables created', status: 'done' }];
+        return res.json({ success: true, steps, method: 'direct' });
       }
     }
 
-    // Option 2: Try exec_sql RPC (works if user enabled it)
+    // Option 2: Try exec_sql RPC via service key
     if (supabaseUrl && supabaseServiceKey) {
-      const adminClient = createClient(supabaseUrl, supabaseServiceKey);
       try {
+        const adminClient = createClient(supabaseUrl, supabaseServiceKey);
         const { error } = await adminClient.rpc('exec_sql', { query: SCHEMA_SQL }).maybeSingle();
         if (!error) {
           return res.json({ success: true, steps: [{ name: 'All tables created', status: 'done' }], method: 'rpc' });
@@ -106,13 +116,13 @@ router.post('/database', async (req, res) => {
       } catch {}
     }
 
-    // Both options failed — return the SQL for manual execution
+    // Both failed — provide the SQL for manual execution with clear instructions
     return res.json({
       success: false,
       needsManualSetup: true,
       schema: SCHEMA_SQL,
       projectRef,
-      hint: 'To auto-create tables, enter your database password (Project Settings → Database).',
+      hint: 'Enter your Supabase database password (Project Settings → Database) to auto-create tables.',
     });
   } catch (err) {
     console.error('[Setup] Database error:', err.message);

@@ -461,6 +461,7 @@ export default function Setup() {
           </button>
         </div>
       </div>
+    </div>
   );
   // ─── AI Keys Step ───────────────────────────────────
   const renderAIKeys = () => (

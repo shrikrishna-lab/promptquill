@@ -1874,6 +1874,34 @@ Use low temperature for CODING and GENERAL precision, medium temperature for CON
     }
   };
 
+  // Check if setup is complete
+  const setupComplete = typeof window !== 'undefined' && localStorage.getItem('pq_setup_complete');
+
+  if (!setupComplete) {
+    return (
+      <div style={{ minHeight: '100vh', background: '#000', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'system-ui, sans-serif' }}>
+        <div style={{ textAlign: 'center', maxWidth: 400, padding: 24 }}>
+          <div style={{ fontSize: 48, marginBottom: 20 }}>⚙️</div>
+          <h1 style={{ fontSize: 24, fontWeight: 800, margin: '0 0 8px 0' }}>Setup Required</h1>
+          <p style={{ color: '#888', fontSize: 14, lineHeight: 1.6, marginBottom: 24 }}>
+            You need to complete the initial setup before generating briefs.
+            This connects your database and configures your AI providers.
+          </p>
+          <button onClick={() => navigate('/setup')} style={{
+            padding: '12px 32px', borderRadius: 10, border: 'none',
+            background: '#a3e635', color: '#000', fontSize: 15, fontWeight: 600,
+            cursor: 'pointer', transition: 'all 0.2s',
+          }}
+            onMouseEnter={e => { e.target.style.background = '#bef264'; e.target.style.transform = 'scale(1.02)'; }}
+            onMouseLeave={e => { e.target.style.background = '#a3e635'; e.target.style.transform = 'scale(1)'; }}
+          >
+            Open Setup Wizard →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       style={{ minHeight: '100vh', backgroundColor: '#080808', color: '#fff', display: 'flex', position: 'relative', overflow: 'hidden' }}
