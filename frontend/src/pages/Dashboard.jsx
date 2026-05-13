@@ -2084,7 +2084,8 @@ Use low temperature for CODING and GENERAL precision, medium temperature for CON
                 ].map(m => (
                   <button
                     key={m.id}
-                    onClick={() => setBottomInputMode(m.id)}
+                    type="button"
+                    onClick={() => { setBottomInputMode(m.id); }}
                     style={{
                       padding: '8px 16px', borderRadius: '99px', border: '1px solid', fontSize: 12, fontWeight: 700,
                       cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6,

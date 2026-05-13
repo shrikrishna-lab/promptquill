@@ -237,7 +237,7 @@ const BottomInput = ({ onGenerate, loading, isCentered, isSidebarOpen, externalI
           padding: window.innerWidth <= 768 ? '12px' : '32px',
           backgroundColor: window.innerWidth <= 768 ? 'transparent' : 'rgba(8, 8, 8, 0.8)',
           backdropFilter: window.innerWidth <= 768 ? 'none' : 'blur(10px)',
-          borderTop: window.innerWidth <= 768 ? 'none' : '1px solid #111',
+
           zIndex: 50,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           pointerEvents: window.innerWidth <= 768 ? 'none' : 'auto'
